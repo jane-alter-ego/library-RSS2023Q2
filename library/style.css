@@ -106,7 +106,7 @@ header {
     line-height: 50px;
     letter-spacing: 0.02em;
     text-align: left;
-    background-image: url("/assets/images/bg.jpeg");
+    background-image: url("assets/images/bg.jpeg");
     background-position: center;
     background-size: 1440px;
     height: 690px;
