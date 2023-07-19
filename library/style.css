@@ -230,6 +230,7 @@ margin-left: 25px;
 .img {
     width: 450px;
     height: 560px;
+    background-color: black;
 }
 
 .carousel-indicators {
@@ -257,7 +258,7 @@ margin-left: 25px;
 
 /*section favorites*/
 
-#book1, #book2, #book3, #book4, #book5, #book6, #book7, #book8, #book9, #book10, #book11, #book12, #book13, #book14, #book15, #book16 {
+.img-books {
     display: flex;
     position: relative;
     left: 370px;
@@ -266,6 +267,7 @@ margin-left: 25px;
     margin: 0;
     width: 200px;
     height: 300px;
+    background-color: black;
 }
 
 .staff-line {
@@ -306,13 +308,12 @@ legend {
 .season:hover, label {
     cursor: pointer;
 }
+
 .season {
     vertical-align: top;
     width: 15px;
     height: 15px;
-    margin: 0 3px 0 0;
-    
-    
+    margin: 0 3px 0 0;   
 }
 
 .season:not(checked) {
@@ -322,8 +323,7 @@ legend {
 
 .season:not(checked) + label {
     position: relative;
-    padding: 0 0 0 40px;
-    
+    padding: 0 0 0 40px;  
 }
 
 .season:not(checked) + label:before {
@@ -441,7 +441,7 @@ input[type="radio"]:checked + label {
 
 /*cafe*/
 
-#cafe p {
+#cafe-description {
     width: 1400px;
     height: 120px;
     font-family: Inter;
@@ -452,6 +452,16 @@ input[type="radio"]:checked + label {
     text-align: center;
 }
 
+#menu p {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+    text-align: inherit;
+}
+    
 #menu {
     display: flex;
     flex-direction: row;
@@ -459,12 +469,8 @@ input[type="radio"]:checked + label {
     width: 1400px;
     height: 520px; 
     margin-top: 40px; 
-    margin-bottom: 60px; 
+    margin-bottom: 58px; 
 }
-
-/*.menu-header {
-    height: 80px;
-}*/
 
 .price {
     font-family: Forum;
@@ -489,7 +495,6 @@ input[type="radio"]:checked + label {
     font-weight: 400;
     line-height: 40px;
     letter-spacing: 2px;
-
 }
 
 #menu-left {
@@ -498,15 +503,6 @@ input[type="radio"]:checked + label {
 
 #menu-right {
     text-align: right;
-}
-
-#drink, #eat {
-    font-family: Inter;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 40px;
-    letter-spacing: 2px;
-    height: 520px;     
 }
 
 #drink {
@@ -538,11 +534,23 @@ input[type="radio"]:checked + label {
 
 .menu-item-left {
     width: 197px;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 2px;
+    height: 520px; 
 }
 
 .menu-item-right {
     width: 210px;
     margin-left: 20px;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 2px;
+    height: 520px; 
 }
 
 
@@ -569,7 +577,7 @@ input[type="radio"]:checked + label {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    margin-bottom: 97px; 
+    margin-bottom: 100px; 
 }
 
 #contacts {
@@ -587,7 +595,7 @@ input[type="radio"]:checked + label {
     margin-top: 40px;  
 }
 
-.contancts-details {
+.contacts-details {
     width: 503px;
     height: 160px; 
     display: flex;
@@ -603,6 +611,7 @@ input[type="radio"]:checked + label {
     text-align: left;
     width: 503px;
     height: 40px;
+    display: block;
 }
 
 #contacts-title, #contact-staff {
@@ -612,13 +621,13 @@ input[type="radio"]:checked + label {
     letter-spacing: 2px;
     text-align: left;
     text-transform: capitalize;
-
 }
 
 #contact-staff {
+    margin-top: 50px;
     width: 503px;
     height: 100px;
-    line-height: 65px;
+    line-height: 60px;
 }
 
 #contacts-title {
@@ -658,7 +667,7 @@ input[type="radio"]:checked + label {
     width: 1420;
     height: 550px;
     margin-top: -10px;
-    margin-bottom: -10px;
+    margin-bottom: -7px;
 }
 
 #form {
@@ -671,10 +680,11 @@ input[type="radio"]:checked + label {
 
 form {
     width: 556px;
-    height: 264px;
+    height: 268px;
     background-color: #BB945F;
     border: 3px solid #BB945F;
-    margin: 20px 15px;
+    margin: 15px 15px 20px 15px;
+    
 }
 
 form > p {
@@ -685,7 +695,7 @@ form > p {
     letter-spacing: 0.02em;
     text-align: left;
     margin-left: 20px;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 form input ::-webkit-input-placeholder, form input ::-moz-placeholder, form input ::-o-placeholder, form input ::-khtml-placeholder, form input ::placeholder {
@@ -709,7 +719,7 @@ form input {
     letter-spacing: 0.02em;
     text-align: left;
     color: #8E8E8E;
-    padding-left: 15px;
+    padding-left: 20px;
     margin-bottom: 25px;
     margin-left: 20px;
 }
@@ -754,7 +764,6 @@ input[type="text"]:focus {
     text-align: right;
     margin: 35px 0;
     width: 456px;
-
 }
 
 #login button {
@@ -766,6 +775,7 @@ footer {
     background-color: black;
     color: #FFFFFF;
     font-family: Inter;
+    height: 250px;
 } 
 
  #adress {
@@ -786,13 +796,13 @@ footer {
  #media {
     display: flex;
     flex-direction: row;
-    justify-content: left;
-    align-items: flex-start;
-    width: 229px;
-    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    width: 102px;
+    height: 24px;
 }
 
- #workdays, #weekend {
+#workdays, #weekend {
     color: #FFFFFF;
     font-family: Inter;
     font-size: 15px;
@@ -802,8 +812,15 @@ footer {
     text-align: right;
     width: 149px;
     height: 40px;
-    padding-top: 20px;
  }
+
+#workdays {
+    padding-top: 20px;
+}
+ 
+#weekend {
+    padding-top: 10px;
+}
 
  #contact {
     display: flex;
@@ -832,22 +849,19 @@ footer {
     font-weight: 400;
     line-height: 20px;
     letter-spacing: 2px;
-    margin: 20px;
-}
-
-#rss, #github {
-    margin: 20px;
+    
 }
 
 #rss {
-    padding-left: 120px;
+    padding-left: 135px;
 }
 
 #underline {
     display: flex;
     flex-direction: row;
     justify-content: space-between; 
-    width: 100%;
+    width: 1400px;
+    margin: 45px 20px;
 }
 
 #footer-line {
