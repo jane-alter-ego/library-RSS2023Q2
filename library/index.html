@@ -44,11 +44,12 @@
                     </nav>
                     
                     <img id="user" src="assets/icons/icon_profile.svg" alt="user">
-                    <div class="menu-burger">
-                        <hr class="burger">
-                        <hr class="burger">
-                        <hr class="burger">
-                    </div>
+                    <button class="menu-burger open">
+                        <!--add class open-->
+                        <span class="burger"></span>
+                        <span class="burger"></span>
+                        <span class="burger"></span>
+                    </button>
                 </div>
             </div>
             <section id="bienvenido"><h2 id="welcome">WELCOME&nbsp;<br>TO THE BROOKLYN<br>LIBRARY</h2></section>
@@ -78,18 +79,28 @@
                             <img id="image4" src="assets/images/image4.png" alt="library image" class="img">
                             <img id="image5" src="assets/images/image5.png" alt="library image" class="img">
                         </div>-->
+                        <!-- Next and previous buttons -->
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
                     </div>
                     <!-- Элементы управления -->
                     <div class="carousel-indicators">
-                        <div id="0" class="rectangle-button">
+                        <div id="slide0" class="rectangle-button">
                             <div class="circle-button" id="active"></div>
                         </div>
-                        <div id="1" class="rectangle-button">
+                        <div id="slide1" class="rectangle-button">
                             <div class="circle-button"></div>
                         </div>
-                        <div id="2" class="rectangle-button">
+                        <div id="slide2" class="rectangle-button">
                             <div class="circle-button"></div>
                         </div>
+                        <div id="slide3" class="rectangle-button">
+                            <div class="circle-button"></div>
+                        </div>
+                        <div id="slide4" class="rectangle-button">
+                            <div class="circle-button"></div>
+                        </div>
+        
                         
                     </div>
                 </div>
@@ -415,8 +426,8 @@
                     <div id="login">
                         <h6>Get a reader card</h6>
                         <p>You will be able to see a reader card after logging into account or you can register a new account</p>
-                        <button type="button" class="buy">Sign Up</button>
-                        <button type="button" class="buy">Log In</button>
+                        <button type="button" class="buy" id="sign-up">Sign Up</button>
+                        <button type="button" class="buy" id="log-in">Log In</button>
                     </div>
                 </div>
             </section>
