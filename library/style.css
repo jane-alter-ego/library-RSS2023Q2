@@ -14,6 +14,7 @@ html {
 .container {
     width: 1440px;
     margin: 0 auto;
+    
 }
 
 main {
@@ -881,26 +882,27 @@ footer {
 /*@media*/
 
 @media only screen and (max-width : 1440px) {
-    .menu-burger, #open-menu-burger {
+    .menu-burger, #open-menu-burger, #slide3, #slide4 {
         display: none;
     }
 }
+
 @media only screen and (max-width : 1024px) {
     .container {
-        width: 768px;
+        width: 1024px;
     }
-    
+
     header {
-        background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%), url("assets/images/bg.jpeg");
-        background-position: center;
-        background-size: 768px;
+        background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%), url("assets/images/bgimg.jpeg");
+        background-position: top right;
+        width: 100%;
         height: 690px;
         overflow: hidden;
         background-color: black;
         color: #FFFFFF;   
     }
 
-    nav ul {
+    nav ul, #github i {
         display: none;
     }
 
@@ -911,34 +913,65 @@ footer {
         align-items: center;
         width: 45px;
         height: 22px;
-        margin-top: 35px;
+        margin-top: 33px;
         margin-right: 20px;
         margin-left: 20px;
-
+        cursor: pointer;
+        background-color: #000000;
     }
     
     .burger {
         width: 45px;
         height: 0;
-        border: 2px solid #FFFFFF;
+        border: 1px solid #FFFFFF;
     }
+
+    
+
+    /*cruz*/
+    .menu-burger.open .burger:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+
+    .menu-burger.open .burger:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-burger.open .burger:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+
+    nav {
+        padding-top: 0;
+    }
+    
 
     #open-menu-burger {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+       
         align-items: center;
-        width: 322px;
-        height: 480px;
-        position: relative;
-        top: 70px;
-        right: 0px; 
+        width: 332px;
+        height: 470px;
+        position: absolute;
+        top: 90px;
+        left: 100%; 
+        z-index: 1;
         background-color:#000000;
         padding-bottom: 100px;
-    }
+        transform: translateX(-100%);
+	    transition: transform 0.5s;
+
+        }
+   
+    #open-menu-burger.active {
+	    transform: translateX(436px);
+        }
 
     .line {
-        margin: 0 359px;
+        margin: 0 469px;
     }
 
     #image3, #image2 {
@@ -951,6 +984,45 @@ footer {
         justify-content: center;
         width: 100%;
     }
+
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 1205px;
+        width: 24px;
+        height: 24px;
+        color: black;
+
+    }
+
+    .prev {
+        margin-left: -575px;
+    }
+
+    .next {
+        margin-left: 605px;
+    }
+
+    .prev:hover, .next:hover {
+        font-weight: bold;
+        
+      }
+
+    .carousel-indicators {
+        display: flex;
+        flex-direction: row nowrap;
+        justify-content: center;
+        align-content: center;
+        width: 140px;
+        height: 28px;
+        margin-top: 20px;
+        margin-bottom: 32px;
+    }
+
+    #slide3, #slide4 {
+        display: flex;
+    }
+    
     
     #favorites-items {
         display: flex;
@@ -960,22 +1032,262 @@ footer {
         width: 590px;
         height: 2340px;
         margin-bottom: 80px;
-        margin-left: 89px;
+        margin-left: 180px;
     }
       
     .favorites-items {
         width: 528px;
         height: 543px;
-        /*padding-top: 10px;
-        padding-left: 20px;
-        margin-top: 20px;
-        margin-bottom: 20px;*/
         border: 1px solid black;
         align-content: center;
     }
 
     #cafe-description {
-        width: 728px;
+        width: 960px;
+        height: 200px;
+        font-family: Inter;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 40px;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+
+    #menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 984px;
+        height: 1080px; 
+    }
+
+    #eat {
+        margin-left: 496px;
+    }
+
+    #info {
+        width: 727px;
+        height: 894px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+    }
+
+    #map {
+        width: 696px;
+        height: 414px; 
+        margin-top: 120px; 
+        margin-left: 144px; 
+    }
+    
+    #card-total{
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        align-content: center;
+        width: 600px;
+        height: 696px;
+        margin-top: -10px;
+        margin-bottom: 90px;
+        margin-left: 192px;
+    }
+
+    
+    #login {
+        width: 600px;
+        height: 223px;
+        text-align: center;
+    }
+    
+    h6 {
+        font-family: Forum;
+        font-size: 30px;
+        font-weight: 400;
+        line-height: 33px;
+        letter-spacing: 0.02em;
+        text-align: center;  
+        margin-top: 20px;
+    }
+
+    #login p {
+        font-family: Inter;
+        color: #000000;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 40px;
+        letter-spacing: 0.02em;
+        text-align: center;
+        margin: 40px 0;
+        width: 600px;
+    }
+    
+    #log-in {
+        margin-right: 15px;
+    }
+    
+    
+    
+    #contact {
+        display: flex;
+        flex-flow: column wrap;
+        align-content: space-between;
+        width: 1004px;
+        height: 120px;
+    }
+
+    #rss {
+        padding-left: 50px;
+    }
+
+    #underline {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; 
+        width: 984px;
+        margin: 45px 20px;
+    }
+
+    #footer-line {
+        width: 984px;
+        margin: 20px;
+        border: 1px solid #FFFFFF;   
+    }
+}
+
+@media only screen and (max-width : 768px) {
+    .container {
+        width: 768px;
+    }
+    
+    header {
+        background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%), url("assets/images/bgimg.jpeg");
+        background-position: top right;
+        width: 100%;
+        height: 690px;
+        overflow: hidden;
+        background-color: black;
+        color: #FFFFFF;   
+    }
+
+    nav ul, #github i {
+        display: none;
+    }
+
+    .menu-burger{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 45px;
+        height: 22px;
+        margin-top: 33px;
+        margin-right: 20px;
+        margin-left: 20px;
+        cursor: pointer;
+        background-color: #000000;
+    }
+    
+    .burger {
+        width: 45px;
+        height: 0;
+        border: 1px solid #FFFFFF;
+    }
+
+    
+
+    /*cruz*/
+    .menu-burger.open .burger:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+
+    .menu-burger.open .burger:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-burger.open .burger:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+
+    nav {
+        padding-top: 0;
+    }
+    
+
+    #open-menu-burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+       
+        align-items: center;
+        width: 332px;
+        height: 470px;
+        position: absolute;
+        top: 90px;
+        left: 100%; 
+        z-index: 1;
+        background-color:#000000;
+        padding-bottom: 100px;
+        transform: translateX(-100%);
+	    transition: transform 0.5s;
+
+        }
+   
+    #open-menu-burger.active {
+	    transform: translateX(436px);
+        }
+
+    .line {
+        margin: 0 339px;
+    }
+
+    #image3, #image2 {
+        display: none;
+    }
+    
+    #carousel-img {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .carousel-indicators {
+        display: flex;
+        flex-direction: row nowrap;
+        justify-content: center;
+        align-content: center;
+        width: 140px;
+        height: 28px;
+        margin-top: 20px;
+        margin-bottom: 32px;
+    }
+
+    #slide3, #slide4 {
+        display: flex;
+    }
+    
+    
+    #favorites-items {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        align-items: center;
+        width: 590px;
+        height: 2340px;
+        margin-bottom: 80px;
+        margin-left: 49px;
+    }
+      
+    .favorites-items {
+        width: 528px;
+        height: 543px;
+        border: 1px solid black;
+        align-content: center;
+    }
+
+    #cafe-description {
+        width: 732px;
         height: 200px;
         font-family: Inter;
         font-size: 20px;
@@ -991,12 +1303,10 @@ footer {
         justify-content: space-between;
         width: 728px;
         height: 1080px; 
-        /*margin-top: 40px; 
-        margin-bottom: 58px;*/ 
     }
 
-    #drink {
-
+    #eat {
+        margin-left: 246px;
     }
 
     #info {
@@ -1005,7 +1315,13 @@ footer {
         display: flex;
         flex-flow: column nowrap;
         justify-content: space-between;
-        /*margin-bottom: 100px;*/
+    }
+
+    #map {
+        width: 696px;
+        height: 414px; 
+        margin-top: 120px; 
+        margin-left: 15px; 
     }
     
     #card-total{
@@ -1016,7 +1332,7 @@ footer {
         width: 600px;
         height: 696px;
         margin-top: -10px;
-        margin-bottom: 100px;
+        margin-bottom: 90px;
         margin-left: 64px;
     }
 
@@ -1045,14 +1361,15 @@ footer {
         line-height: 40px;
         letter-spacing: 0.02em;
         text-align: center;
-        margin: 35px 0;
+        margin: 40px 0;
         width: 600px;
     }
     
-    #login button {
-        margin-left: 15px;
+    #log-in {
+        margin-right: 15px;
     }
-
+    
+    
     
     #contact {
         display: flex;
@@ -1061,9 +1378,9 @@ footer {
         width: 748px;
         height: 120px;
     }
-    
+
     #rss {
-        padding-left: 0px;
+        padding-left: 50px;
     }
 
     #underline {
