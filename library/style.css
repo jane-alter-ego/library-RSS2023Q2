@@ -914,7 +914,7 @@ footer {
         color: #FFFFFF;   
     }
 
-    nav ul, #github i {
+    nav ul, #github i,  #image2, #image3, #image4, #image5 {
         display: none;
     }
 
@@ -942,9 +942,11 @@ footer {
         width: 45px;
         height: 0;
         border: 1px solid #FFFFFF;
+        transition: transform 0.5s;
+        will-change: transform; /*fast animation*/
     }
 
-    /*cruz*/
+    /*cross*/
     .header-links.open .burger-lines:nth-child(1) {
         transform: translateY(10px) rotate(45deg);
     }
@@ -967,7 +969,12 @@ footer {
         height: 470px;
         position: absolute;
         top: 90px;
-        right: -100%; 
+        right: -100%;
+        visibility: hidden;
+        transform: transition 0.5s, visibility 0.5s; 
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -o-transition: 0.5s;
         z-index: 1;
         background-color:#000000;
         padding-bottom: 100px;
@@ -975,19 +982,15 @@ footer {
 
     .header-links.open #open-menu-burger {
         right: 0; 
-        -webkit-transition: 0.8s;
-        -moz-transition: 0.8s;
-        -o-transition: 0.8s;
-        transition: 0.5s; 
-        transform: visibility 0.5s;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -o-transition: 0.5s;
+        transform: transition 0.5s, visibility 0.5s;
+        visibility: visible;
     }
 
     .line {
         margin: 0 469px;
-    }
-
-    #image3, #image2, #image4, #image5 {
-        display: none;
     }
     
     #carousel-img {
@@ -1005,7 +1008,6 @@ footer {
         width: 24px;
         height: 24px;
         color: black;
-
     }
 
     .prev {
@@ -1019,7 +1021,6 @@ footer {
     .prev:hover, .next:hover {
         font-weight: bold;
     }
-
 
     .fade {
         -webkit-animation-name: fade;
@@ -1037,7 +1038,6 @@ footer {
         from {opacity: .4} 
         to {opacity: 1}
     }
-
 
     .carousel-indicators {
         display: flex;
@@ -1156,8 +1156,6 @@ footer {
         margin-right: 15px;
     }
     
-    
-    
     #contact {
         display: flex;
         flex-flow: column wrap;
@@ -1207,7 +1205,7 @@ footer {
         color: #FFFFFF;   
     }
 
-    nav ul, #github i {
+    nav ul, #github i, #image2, #image3, #image4, #image5 {
         display: none;
     }
 
@@ -1215,61 +1213,13 @@ footer {
         padding-top: 0;
     }
 
-    
-
     .line {
         margin: 0 339px;
-    }
-
-    #image3, #image2, #image4, #image5 {
-        display: none;
-    }
-    
-    #carousel-img {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-    }
-
-    .prev, .next {
-        cursor: pointer;
-        position: absolute;
-        top: 1205px;
-        width: 24px;
-        height: 24px;
-        color: black;
-
-    }
-
-    .prev {
-        margin-left: -575px;
-    }
-
-    .next {
-        margin-left: 605px;
-    }
-
-    .prev:hover, .next:hover {
-        font-weight: bold;
-        
-    }
-
-    .carousel-indicators {
-        display: flex;
-        flex-direction: row nowrap;
-        justify-content: center;
-        align-content: center;
-        width: 140px;
-        height: 28px;
-        margin-top: 20px;
-        margin-bottom: 32px;
     }
 
     #slide4, #slide5 {
         display: flex;
     }
-    
     
     #favorites-items {
         display: flex;

@@ -1,3 +1,4 @@
+//burger
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("menu-burger-button").addEventListener("click", function() {
         document.querySelector(".header-links").classList.toggle("open")
@@ -13,29 +14,24 @@ window.addEventListener('keydown', (e) => {
 
 // Close burger by outer click
 document.getElementById("open-menu-burger").addEventListener('click', event => {
-    event._isClickWithInMenu = true;
+    /*event._isClickWithInMenu = true; menu is still open*/
+    if (event._isClickWithInMenu) return;
+    document.querySelector(".header-links").classList.remove("open")
 });
 document.getElementById("menu-burger-button").addEventListener('click', event => {
     event._isClickWithInMenu = true;
 });
 document.body.addEventListener('click', event => {
     if (event._isClickWithInMenu) return;
-    document.querySelector(".header-links").classList.remove("open")
-    
+    document.querySelector(".header-links").classList.remove("open") 
 });
 
 
+/*console.log(``);*/
 
 
 
-
-
-
-
-
-
-
-/*console.log(`Самооценка 100/100\n
+/*console.log(`Library#1 Самооценка 100/100\n
 PerfectPixel: Нет отклонений вёрстки от макета, превышающих 10px;\n
 Отличие в ширине слов и отступах между буквами при сопоставлении макета и вёрстки не считается ошибкой, т.к. используется правильный шрифт с правильно указанными свойствами\n
 Вёрстка валидная 10/10;\n
