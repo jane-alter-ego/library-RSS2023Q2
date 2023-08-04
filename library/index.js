@@ -1,4 +1,41 @@
-console.log(`Самооценка 100/100\n
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("menu-burger-button").addEventListener("click", function() {
+        document.querySelector(".header-links").classList.toggle("open")
+    })
+});
+
+//Close burger by Esc
+window.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") {
+        document.querySelector(".header-links").classList.remove("open")
+    }
+});
+
+// Close burger by outer click
+document.getElementById("open-menu-burger").addEventListener('click', event => {
+    event._isClickWithInMenu = true;
+});
+document.getElementById("menu-burger-button").addEventListener('click', event => {
+    event._isClickWithInMenu = true;
+});
+document.body.addEventListener('click', event => {
+    if (event._isClickWithInMenu) return;
+    document.querySelector(".header-links").classList.remove("open")
+    
+});
+
+
+
+
+
+
+
+
+
+
+
+
+/*console.log(`Самооценка 100/100\n
 PerfectPixel: Нет отклонений вёрстки от макета, превышающих 10px;\n
 Отличие в ширине слов и отступах между буквами при сопоставлении макета и вёрстки не считается ошибкой, т.к. используется правильный шрифт с правильно указанными свойствами\n
 Вёрстка валидная 10/10;\n
@@ -61,4 +98,4 @@ PerfectPixel: Нет отклонений вёрстки от макета, пр
 cсылка на GitHub 2/2;\n
 в футере ссылка The Rolling Scopes School ведет на страницу курса https://rs.school/js-stage0/ 2/2;\n
 интерактивность элементов согласно макету 2/2;\n
-плавное изменение внешнего вида элемента при наведении и клике не влияет на соседние элементы 2/2`);
+плавное изменение внешнего вида элемента при наведении и клике не влияет на соседние элементы 2/2`);*/
