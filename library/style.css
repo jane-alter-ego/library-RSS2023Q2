@@ -966,7 +966,7 @@ footer {
         justify-content: space-between;
         align-items: center;
         width: 332px;
-        height: 470px;
+        height: 370px;
         position: absolute;
         top: 90px;
         right: -100%;
@@ -978,6 +978,7 @@ footer {
         z-index: 1;
         background-color:#000000;
         padding-bottom: 100px;
+        padding-top: 10px;
     }
 
     .header-links.open #open-menu-burger {
