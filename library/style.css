@@ -14,7 +14,11 @@ html {
 .container {
     width: 1440px;
     margin: 0 auto;
-    
+    overflow-x: hidden;
+}
+
+#body-wraper {
+    overflow-x: hidden;
 }
 
 main {
@@ -137,7 +141,6 @@ nav > ul {
     flex-direction: row;
     justify-content: right;
     align-items: flex-start;
-
 }
 
 nav > ul > li > a {
@@ -151,7 +154,7 @@ nav > ol > li > a {
     text-decoration: none;        
 }
 
-nav > ul > li > a:hover, nav > ol > li > a:hover {
+nav > ul > li > a:hover, nav > ol > li > a:hover, #user-inactive > a:hover {
     font-weight: bold;
     cursor: pointer;
     }
@@ -169,16 +172,84 @@ ul, ol {
 }
 
 #user {
-width: 25px;
-height: 25px;
-text-align: center;
-margin-top: 32px;
-margin-right: 20px;
-margin-left: 30px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    margin-top: 32px;
+    margin-right: 20px;
+    margin-left: 30px;
+}
+
+#button-user {
+    background-color: transparent;
 }
 
 #user:hover, .carousel-indicators, .card {
     cursor: pointer;
+}
+
+#user-inactive {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 80px;
+    height: 115px;
+    position: absolute;
+    top: -100%;
+    right: 0;
+    visibility: hidden;
+    transform: transition 0.5s, visibility 0.5s; 
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    z-index: 1;
+    background-color: #FFFFFF;
+}
+
+#user-inactive p {
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: black;
+    margin: 5px 0 3px 0;
+    width: 48px;
+    height: 20px;
+}
+
+.line-user {
+    width: 40px;
+    border: 1px solid #BB945F;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#user-inactive a {
+    text-decoration: none;
+    color: #000000;
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: center; 
+    width: 59px;
+    height: 20px;
+    margin-bottom: 17px;
+}
+
+.user-menu.open #user-inactive {
+    display: flex;
+    top: 90px;
+    right: 0; 
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transform: transition 0.5s, visibility 0.5s;
+    visibility: visible;
 }
 
 #bienvenido{
@@ -562,7 +633,6 @@ input[type="radio"]:checked + label {
     height: 520px; 
 }
 
-
 .menu-line-left {
     width: 100px;
     border: 1px solid #BB945F;
@@ -893,12 +963,11 @@ footer {
 
 @media only screen and (max-width : 1024px) {
     .container {
-        width: 1024px;
-        
+        width: 1024px; 
     }
 
     #body-wraper {
-        overflow: hidden;
+        overflow-x: hidden;
         width: 100%;
         position: relative;
     }
@@ -920,6 +989,17 @@ footer {
 
     nav {
         padding-top: 0;
+    }
+
+    .user-menu.open #user-inactive {
+        display: flex;
+        top: 90px;
+        right: 80px; 
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -o-transition: 0.5s;
+        transform: transition 0.5s, visibility 0.5s;
+        visibility: visible;
     }
 
     /*menu-burger*/
@@ -1008,7 +1088,6 @@ footer {
         top: 1200px;
         width: 24px;
         height: 24px;
-
     }
 
     .prev {
@@ -1187,10 +1266,11 @@ footer {
 @media only screen and (max-width : 768px) {
     .container {
         width: 768px;
+        overflow-x: hidden;
     }
 
     #body-wraper {
-        overflow: hidden;
+        overflow-x: hidden;
         width: 100%;
         position: relative;
     }

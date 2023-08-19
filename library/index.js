@@ -26,8 +26,72 @@ document.body.addEventListener('click', event => {
     document.querySelector(".header-links").classList.remove("open") 
 });
 
+//Open user-menu
 
-console.log(`Library#2 Самооценка 50/50\n
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("button-user").addEventListener("click", function() {
+        document.getElementById("user-menu").classList.toggle("open")
+    })
+});
+
+//Close user-menu by Esc
+window.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") {
+        document.querySelector(".user-menu").classList.remove("open")
+    }
+});
+
+// Close user-menu by outer click
+document.getElementById("button-user").addEventListener('click', event => {
+    event._isClickWithInUserMenu = true;
+    console.log('event', event._isClickWithInUserMenu)
+});
+document.getElementById("user-inactive").addEventListener('click', event => {
+    /*event._isClickWithInMenu = true; menu is still open*/
+    if (event._isClickWithInUserMenu) return;
+    document.querySelector(".user-menu").classList.remove("open")
+});
+
+document.body.addEventListener('click', event => {
+    if (event._isClickWithInUserMenu) return;
+    document.querySelector(".user-menu").classList.remove("open") 
+});
+
+
+// Slider About
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+
+  const slides = document.getElementsByClassName("img");
+  const dots = document.getElementsByClassName("circle-button");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (let i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+
+
+
+
+/*console.log(`Library#2 Самооценка 50/50\n
 1.Вёрстка соответствует макету. Ширина экрана 768px +26:\n
 блок <header> +2\n
 секция Welcome +2\n
@@ -45,7 +109,7 @@ console.log(`Library#2 Самооценка 50/50\n
 3.На ширине экрана 768рх реализовано адаптивное меню +12\n:
 при нажатии на бургер-иконку плавно появляется адаптивное меню +4\n
 при нажатии на крестик или на область вне меню, адаптивное меню плавно скрывается, уезжая за экран +4\n
-ссылки в адаптивном меню работают, обеспечивая плавную прокрутку по якорям при нажатии, а само адаптивное меню при этом плавно скрывается +4`);
+ссылки в адаптивном меню работают, обеспечивая плавную прокрутку по якорям при нажатии, а само адаптивное меню при этом плавно скрывается +4`);*/
 
 
 
