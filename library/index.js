@@ -44,7 +44,6 @@ window.addEventListener('keydown', (e) => {
 // Close user-menu by outer click
 document.getElementById("button-user").addEventListener('click', event => {
     event._isClickWithInUserMenu = true;
-    console.log('event', event._isClickWithInUserMenu)
 });
 document.getElementById("user-inactive").addEventListener('click', event => {
     /*event._isClickWithInMenu = true; menu is still open*/
@@ -88,7 +87,17 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
+//Slider Favorites
 
+document.addEventListener("DOMContentLoaded", function() {
+    const radios = document.querySelectorAll('input[type=radio][name="season"]');
+    radios.forEach(radio => (radio.addEventListener("change", () => {
+        const allBooks = document.querySelectorAll("div.favorites-items");
+        allBooks.forEach(book => (book.classList.add("hidden")));
+        const seasonBooks = document.querySelectorAll(`div.favorites-items.${radio.value}`);
+        seasonBooks.forEach(book => ((book.classList.remove("hidden"))));
+    })));
+});
 
 
 /*console.log(`Library#2 Самооценка 50/50\n

@@ -483,6 +483,12 @@ input[type="radio"]:checked + label {
     text-transform: capitalize;
 }
 
+/*fieldset*/
+.hidden {
+    display: none;
+}
+
+
 .buy {
     font-family: Inter;
     font-size: 10px;
