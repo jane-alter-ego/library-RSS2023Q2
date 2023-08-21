@@ -489,7 +489,7 @@ input[type="radio"]:checked + label {
 }
 
 
-.buy {
+.buy, .button-login, .button-signup, .buy-card {
     font-family: Inter;
     font-size: 10px;
     font-weight: 700;
@@ -502,7 +502,7 @@ input[type="radio"]:checked + label {
     background-color: #FFFFFF;
 }
 
-.buy:hover, .card:hover {
+.buy:hover, .card:hover, .button-login:hover, .button-signup:hover, .buy-card:hover {
     cursor: pointer;
     background-color: #BB945F;
     border: 1px solid #BB945F;
@@ -745,7 +745,7 @@ input[type="radio"]:checked + label {
 
 /*card*/
 
-#card-total{
+#card-total, #card-total-after-register{
     display: flex;
     flex-flow: row;
     justify-content: space-between;
@@ -755,7 +755,7 @@ input[type="radio"]:checked + label {
     margin-bottom: -7px;
 }
 
-#form {
+#form, #form-after-register {
     width: 594px;
     height: 380px;
     border: 3px solid #BB945F;
@@ -783,7 +783,7 @@ form > p {
     margin-top: 20px;
 }
 
-form input ::-webkit-input-placeholder, form input ::-moz-placeholder, form input ::-o-placeholder, form input ::-khtml-placeholder, form input ::placeholder {
+#form-before input ::-webkit-input-placeholder, #form-before input ::-moz-placeholder, #form-before input ::-o-placeholder, #form-before input ::-khtml-placeholder, #form-before input ::placeholder {
     font-family: Forum;
     font-size: 30px;
     font-weight: 400;
@@ -793,7 +793,7 @@ form input ::-webkit-input-placeholder, form input ::-moz-placeholder, form inpu
     color: #8E8E8E;
 }
 
-form input {
+#form-before input {
     width: 500px;
     height: 66px;
     border-radius: 10px;
@@ -833,13 +833,13 @@ input[type="text"]:focus {
     margin-left: 176px;
 }
 
-#login {
+#login, #login-after {
     width: 456px;
     height: 253px;
     text-align: right;
 }
 
-#login p {
+#login p, #login-after p {
     font-family: Inter;
     color: #000000;
     font-size: 20px;
@@ -853,6 +853,72 @@ input[type="text"]:focus {
 
 #login button {
     margin-left: 15px;
+}
+
+#card-total-after-register {
+    display: none;
+}
+
+/*after registration*/
+#icons {
+    display: flex;
+    flex-direction: row nowrap;
+    justify-content: space-between;
+    width: 170px;
+    height: 65px;
+    margin-left: 195px;
+    margin-top: -10px;
+}
+
+#visit, #bonus, #books-number {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    width: 42px;
+    height: 63px;
+}
+
+#icons img {
+    width: 20px;
+    height: 21px;
+    margin-left: 10px;
+}
+
+#icons p {
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#f-after-register input ::-webkit-input-placeholder, #f-after-register input ::-moz-placeholder, #f-after-register ::-o-placeholder, #f-after-register ::-khtml-placeholder, #f-after-register ::placeholder {
+    font-family: Forum;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #BB945F;
+}
+
+#f-after-register input {
+    width: 500px;
+    height: 66px;
+    border-radius: 10px;
+    font-family: Forum;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #BB945F;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    margin-left: 20px;
 }
 
 /*footer*/
@@ -897,7 +963,7 @@ footer {
     text-align: right;
     width: 149px;
     height: 40px;
- }
+}
 
 #workdays {
     padding-top: 20px;
@@ -907,7 +973,7 @@ footer {
     padding-top: 10px;
 }
 
- #contact {
+#contact {
     display: flex;
     flex-flow: column wrap;
     align-content: space-between;
@@ -954,6 +1020,374 @@ footer {
     margin: 20px;
     border: 1px solid #FFFFFF;   
 }
+
+/*overlay and modals*/
+/*#overlay {
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.noscroll {
+    overflow: hidden;
+}*/
+
+
+/*modal-login*/
+#modal-login {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    width: 250px;
+    height: 262px;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 90px;
+    right: 50px;
+}
+ 
+#modal-login h6 {
+    font-family: Forum;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    width: 56px;
+    height: 20px;
+    margin-top: 20px;
+    margin-left: 97px;
+    margin-bottom: 20px;
+}
+
+.close-button {
+    background-color: transparent;
+    width: 15px;
+    height: 15px;
+    position: fixed;
+    margin-top: 15px;
+    right: 65px;
+}
+
+.button-login {
+    margin-left: 25px;
+    border-radius: 2px;
+    margin-top: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#form-modal-login {
+    width: 200px;
+    height: 160px;
+    background-color: #FFFFFF;
+    border: none;
+    margin: 0 0 0 0;
+}
+
+#form-modal-login p {
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #0C0C0E;
+    margin-left: 25px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+}
+
+#form-modal-login input {
+    width: 200px;
+    height: 20px;
+    margin-left: 25px;
+    border: 1px solid #BB945F;
+    border-radius: 0;
+    padding-left: 0;
+    margin-bottom: 10px;
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #8E8E8E;
+}
+
+#no-account {
+    display: flex;
+    flex-direction: row nowrap;
+    margin-left: 25px;
+    margin-bottom: 25px;
+    justify-content: flex-start;
+
+}
+
+#no-account a {
+    color: #0C0C0E;
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 1px;
+    text-align: left;
+    width: 49px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+#no-account p {
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #0C0C0E;
+    margin-top: 10px;
+
+}
+
+/*modal-register*/
+#modal-register {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    width: 250px;
+    height: 382px;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 90px;
+    right: 50px;
+}
+
+#modal-register h6 {
+    font-family: Forum;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    width: 81px;
+    height: 20px;
+    margin-top: 20px;
+    margin-left: 85px;
+    margin-bottom: 20px;
+}
+
+.button-signup {
+    margin-left: 25px;
+    border-radius: 2px;
+    margin-top: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#form-modal-register {
+    width: 200px;
+    height: 280px;
+    background-color: #FFFFFF;
+    border: none;
+    margin: 0 0 0 0;
+}
+
+#form-modal-register p {
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #0C0C0E;
+    margin-left: 25px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+}
+
+#form-modal-register input {
+    width: 200px;
+    height: 20px;
+    margin-left: 25px;
+    border: 1px solid #BB945F;
+    border-radius: 0;
+    padding-left: 0;
+    margin-bottom: 10px;
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #8E8E8E;
+}
+
+#has-account {
+    display: flex;
+    flex-direction: row nowrap;
+    margin-left: 25px;
+    margin-bottom: 25px;
+    justify-content: flex-start;
+
+}
+
+#has-account a {
+    color: #0C0C0E;
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 1px;
+    text-align: left;
+    width: 49px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+#has-account p {
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #0C0C0E;
+    margin-top: 10px;
+
+}
+
+/*modal-buy-card*/
+
+#buy-card {
+    display: flex;
+    flex-direction: column nowrap;
+    align-content: space-between;
+}
+#modal-buy-card {
+    width: 650px;
+    height: 540px;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 90px;
+    right: 50px;
+}
+
+#modal-buy-card h2 {
+    background-color: #000000;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    width: 650px;
+    height: 60px;
+    margin-top: 0;
+
+}
+
+
+#form-modal-buy-card {
+    width: 200px;
+    height: 380px;
+    background-color: #FFFFFF;
+    border: none;
+    margin: 0 0 0 40px;
+}
+
+#form-modal-buy-card p {
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #0C0C0E;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+}
+
+#form-modal-buy-card > input {
+    width: 200px;
+    height: 20px;
+    margin-left: 0;
+    border: 1px solid #BB945F;
+    border-radius: 0;
+    padding-left: 0;
+    margin-bottom: 10px;
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #8E8E8E;
+}
+
+#code-p1, #code-p2, #cvc {
+    width: 45px;
+    height: 20px;
+    margin-left: 0;
+    margin-right: 5px;
+    border: 1px solid #BB945F;
+    border-radius: 0;
+    padding-left: 0;
+    margin-bottom: 10px;
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #8E8E8E;
+
+}
+
+#add-info-p {
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-align: left;
+    width: 330px;
+    height: 160px;
+    color: #8E8E8E;
+    margin: 0 0 0 40px;
+
+}
+
+#button-price {
+    display: flex;
+    flex-direction: row nowrap;
+    margin-left: 0;
+    margin-top: 0;
+    justify-content: flex-start; 
+}
+
+.buy-card {
+    margin-left: 40px;
+    border-radius: 2px;
+    margin-top: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#price {
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-align: left;
+    width: 88px;
+    height: 20px; 
+    margin: 10px 0 0 20px;  
+}
+
+
 
 /*@media*/
 
@@ -1197,7 +1631,7 @@ footer {
         margin-left: 144px; 
     }
     
-    #card-total{
+    #card-total, #card-total-after-register {
         display: flex;
         flex-flow: column;
         justify-content: space-between;
@@ -1210,7 +1644,7 @@ footer {
     }
 
     
-    #login {
+    #login, #login-after {
         width: 600px;
         height: 223px;
         text-align: center;
@@ -1238,8 +1672,20 @@ footer {
         width: 600px;
     }
     
-    #log-in {
+    #log-in, #profile {
         margin-right: 15px;
+    }
+
+    #login-after p {
+        font-family: Inter;
+        color: #000000;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 40px;
+        letter-spacing: 0.02em;
+        text-align: center;
+        margin: 20px 0 20px 0;
+        width: 600px;
     }
     
     #contact {
@@ -1364,7 +1810,7 @@ footer {
         margin-left: 15px; 
     }
     
-    #card-total{
+    #card-total, #card-total-after-register {
         display: flex;
         flex-flow: column;
         justify-content: space-between;
@@ -1376,7 +1822,7 @@ footer {
         margin-left: 64px;
     }
     
-    #login {
+    #login, #login-after {
         width: 600px;
         height: 223px;
         text-align: center;
@@ -1403,8 +1849,20 @@ footer {
         margin: 40px 0;
         width: 600px;
     }
+
+    #login-after p {
+        font-family: Inter;
+        color: #000000;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 40px;
+        letter-spacing: 0.02em;
+        text-align: center;
+        margin: 20px 0;
+        width: 600px;
+    }
     
-    #log-in {
+    #log-in, #profile {
         margin-right: 15px;
     }
     

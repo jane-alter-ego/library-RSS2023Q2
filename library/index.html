@@ -19,7 +19,7 @@
         
       </head>
 
-    <body class="container">
+    <body class="container noscroll">
     <div id="body-wraper">
         <header>
             <div id="header">
@@ -424,11 +424,12 @@
             <section id="card">
                 <h2>Digital Library Cards</h2>
                 <hr class="line">
+                
                 <div id="card-total">
                     <div id="find-card">
                         <h5>Find your Library card</h5>
                         <div id="form">
-                        <form id="f">
+                        <form id="form-before">
                             <p>Brooklyn Public Library</p>
                             <input type="text" placeholder="Reader's name" name="name" required>
                             <input type="text" placeholder="Card number" name="number" required>
@@ -442,6 +443,45 @@
                         <p>You will be able to see a reader card after logging into account or you can register a new account</p>
                         <button type="button" class="buy" id="sign-up">Sign Up</button>
                         <button type="button" class="buy" id="log-in">Log In</button>
+                    </div>
+                </div>
+
+                <div id="card-total-after-register">
+                    <div id="your-card">
+                        <h5>Your Library card</h5>
+                        <div id="form-after-register">
+                        <form id="f-after-register">
+                            <p>Brooklyn Public Library</p>
+                            <input type="text" placeholder="John Doe" name="name" required>
+                            <input type="text" placeholder="F00234030" name="number" required>
+                
+                        </form>
+                        <div id="icons">
+                            <div id="visit">
+                                <p>Visits</p>
+                                <img src="assets/icons/visits.svg" alt="visits">
+                                <span class="visits"><p>23</p></span>
+                            </div>
+
+                            <div id="bonus">
+                                <p>Bonuses</p>
+                                <img src="assets/icons/star.svg" alt="bonuses">
+                                <span class="bonuses"><p>1240</p></span>
+                            </div>
+
+                            <div id="books-number">
+                                <p>Books</p>
+                                <img src="assets/icons/books.svg" alt="books">
+                                <span class="books-number"><p>2</p></span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div id="login-after">
+                        <h6>Visit your profile</h6>
+                        <p>With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.</p>
+                        
+                        <button type="button" class="buy" id="profile">Profile</button>
                     </div>
                 </div>
             </section>
@@ -494,6 +534,81 @@
                   </div>  
             </div>
         </footer>
+        <!--<div id="overlay">-->
+            
+            <!--<div id="modal-login">
+                <button class="close-button"><img src="assets/icons/close_btn.svg" alt="close button"></button>
+                <h6>LOGIN</h6>
+                <form id="form-modal-login">
+                    <p>E-mail or readers card</p>
+                    <input type="text" name="email" required>
+                    <p>Password</p>
+                    <input type="text" name="password" required>
+                </form>
+                <button type="submit" form="form-modal-login" class="button-login">Log In</button>
+                <div id="no-account">
+                    <p>Don’t have an account?</p>
+                    <a href="" class="" id="">Register</a>
+                </div>
+            </div>-->
+        
+
+            <!--<div id="modal-register">
+                <button class="close-button"><img src="assets/icons/close_btn.svg" alt="close button"></button>
+                <h6>REGISTER</h6>
+                <form id="form-modal-register">
+                    <p>First name</p>
+                    <input type="text" name="first" required>
+                    <p>Last name</p>
+                    <input type="text" name="last" required>
+                    <p>E-mail</p>
+                    <input type="text" name="email" required>
+                    <p>Password</p>
+                    <input type="text" name="password" required>
+                </form>
+                <button type="submit" form="form-modal-register" class="button-signup">Sign Up</button>
+                <div id="has-account">
+                    <p>Already have an account?</p>
+                    <a href="" class="" id="">Login</a>
+                </div>
+            </div>-->
+
+            <!--<div id="modal-buy-card">
+                <button class="close-button"><img src="assets/icons/close_btn_white.svg" alt="close button"></button>
+                <h2>Buy a library card</h2>
+                <div id="buy-card">
+                    <div>
+                        <form id="form-modal-buy-card">
+                            <p>Bank card number</p>
+                            <input type="text" name="bank" required>
+                            <p>Expiration code</p>
+                            <div style="display:inline-block">
+                            <input id="code-p1" type="text" name="code-part1" required>
+                            <input id="code-p2" type="text" name="code-part2" required>
+                            </div>
+                            <p>CVC</p>
+                            <div>
+                            <input id="cvc" type="text" name="CVC" required>
+                            </div>
+                            <p>Cardholder name</p>
+                            <input type="text" name="name" required>
+                            <p>Postal code</p>
+                            <input type="text" name="postal" required>
+                            <p>City / Town</p>
+                            <input type="text" name="city" required>
+                        </form>
+                        <div id="button-price">
+                            <button type="submit" form="form-modal-buy-card" class="buy-card">Buy</button>
+                            <p id="price">$ 25.00</p>
+                        </div>
+                    </div>
+                    
+                        <p id="add-info-p">If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.</p>
+                    
+                </div>
+            </div>-->
+
+        <!--</div>-->
     </div>
         <script src="index.js"></script>
     </body>
