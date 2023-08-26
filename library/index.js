@@ -56,16 +56,44 @@ document.body.addEventListener('click', event => {
     document.querySelector(".user-menu").classList.remove("open") 
 });
 
-/*Открытие модального окна по иконке юзера до регистрации*/
+/*Открытие модального окна Login*/
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("user-menu-link-login").addEventListener("click", function() {
-        document.getElementById("user-menu").classList.toggle("open");
         document.querySelector(".overlay").classList.toggle("overlay-open");
         let div = document.getElementById("modal-login");
         div.style.display = 'flex';
     })
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("has-account-button").addEventListener("click", function() {
+        let div = document.getElementById("modal-register");
+        div.style.display = 'none';
+        document.querySelector(".overlay").classList.toggle("overlay-open");
+        let div2 = document.getElementById("modal-login");
+        div2.style.display = 'flex';
+    })
+});
+
+
+/*Открытие модального окна Register*/
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("user-menu-link-register").addEventListener("click", function() {
+        document.querySelector(".overlay").classList.toggle("overlay-open");
+        let div = document.getElementById("modal-register");
+        div.style.display = 'flex';
+    })
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("no-account-button").addEventListener("click", function() {
+        let div = document.getElementById("modal-login");
+        div.style.display = 'none';
+        document.querySelector(".overlay").classList.toggle("overlay-open");
+        let div2 = document.getElementById("modal-register");
+        div2.style.display = 'flex';
+    })
+});
 
 /*Открытие модального окна с покупкой карты и оверлея по кнопке Buy*/
 document.addEventListener("DOMContentLoaded", function() {
@@ -77,11 +105,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 /*Закрытие модального окна с покупкой карты и оверлея по крестику */
-document.querySelector(".close-button").addEventListener('click', event => {
+document.querySelectorAll(".close-button").forEach(el => el.addEventListener('click', event => {
     document.querySelector(".overlay").classList.remove("overlay-open");
     let div = document.getElementById("modal-buy-card");
     div.style.display = 'none';
-});
+}));
 
 
 // Slider About

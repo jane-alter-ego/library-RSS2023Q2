@@ -1179,7 +1179,7 @@ footer {
 
 /*modal-register*/
 #modal-register {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-content: space-between;
     width: 250px;
@@ -1259,7 +1259,9 @@ footer {
 
 }
 
-#has-account a {
+#has-account button {
+    background-color: transparent;
+    text-decoration: underline;
     color: #0C0C0E;
     font-family: Inter;
     font-size: 10px;
@@ -1268,8 +1270,10 @@ footer {
     letter-spacing: 1px;
     text-align: left;
     width: 49px;
+    height: 30px;
     padding-left: 10px;
-    padding-top: 10px;
+    padding-top: 0;
+    cursor: pointer;
 }
 
 #has-account p {
