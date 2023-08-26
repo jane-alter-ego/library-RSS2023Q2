@@ -56,6 +56,17 @@ document.body.addEventListener('click', event => {
     document.querySelector(".user-menu").classList.remove("open") 
 });
 
+/*Открытие модального окна по иконке юзера до регистрации*/
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("user-menu-link-login").addEventListener("click", function() {
+        document.getElementById("user-menu").classList.toggle("open");
+        document.querySelector(".overlay").classList.toggle("overlay-open");
+        let div = document.getElementById("modal-login");
+        div.style.display = 'flex';
+    })
+});
+
+
 /*Открытие модального окна с покупкой карты и оверлея по кнопке Buy*/
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".buy-before-login").forEach(el => el.addEventListener("click", function() {
