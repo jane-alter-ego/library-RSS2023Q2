@@ -27,26 +27,32 @@ document.body.addEventListener('click', event => {
 });
 
 //Open user-menu
-
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("button-user").addEventListener("click", function() {
-        document.getElementById("user-menu").classList.toggle("open")
-    })
-});
+     document.getElementById("button-user").addEventListener("click", function() {
+         document.getElementById("user-menu").classList.toggle("open")
+     })
+ });
+
+//Открытие меню юзера после регистрации
+//document.addEventListener("DOMContentLoaded", function() {
+//    document.getElementById("button-user-active").addEventListener("click", function() {
+//        document.getElementById("dropmenu").classList.toggle("open")
+//    })
+//});
 
 //Close user-menu by Esc
 window.addEventListener('keydown', (e) => {
     if (e.key === "Escape") {
-        document.querySelector(".user-menu").classList.remove("open")
+        document.querySelector(".user-menu").classList.remove("open");
     }
 });
 
-// Close user-menu by outer click
+//Close user-menu by outer click
 document.getElementById("button-user").addEventListener('click', event => {
     event._isClickWithInUserMenu = true;
-});
+ });
 document.getElementById("user-inactive").addEventListener('click', event => {
-    /*event._isClickWithInMenu = true; menu is still open*/
+     /*event._isClickWithInMenu = true; menu is still open*/
     if (event._isClickWithInUserMenu) return;
     document.querySelector(".user-menu").classList.remove("open")
 });
@@ -55,6 +61,22 @@ document.body.addEventListener('click', event => {
     if (event._isClickWithInUserMenu) return;
     document.querySelector(".user-menu").classList.remove("open") 
 });
+
+// Close dropmenu by outer click
+//document.getElementById("button-user-active").addEventListener('click', event => {
+//    event._isClickWithInUserMenu = true;
+//});
+//document.getElementById("user-active").addEventListener('click', event => {
+    /*event._isClickWithInMenu = true; menu is still open*/
+//    if (event._isClickWithInUserMenu) return;
+//    document.querySelector(".dropmenu").classList.remove("open")
+//});
+
+//document.body.addEventListener('click', event => {
+//    if (event._isClickWithInUserMenu) return;
+//    document.querySelector(".dropmenu").classList.remove("open") 
+//});
+
 
 /*Открытие модального окна Login в меню юзера*/
 document.addEventListener("DOMContentLoaded", function() {
@@ -120,6 +142,16 @@ document.addEventListener("DOMContentLoaded", function() {
         div.style.display = 'block';
     }))
 });
+
+/*Открытие модального окна с профилем*/
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("profile").addEventListener("click", function() {
+        document.querySelector(".overlay").classList.toggle("overlay-open");
+        let register = document.getElementById("modal-profile");
+        register.style.display = 'flex';
+    })
+});
+
 
 /*Закрытие модалок и оверлея по крестику */
 document.querySelectorAll(".close-button").forEach(el => el.addEventListener('click', event => {

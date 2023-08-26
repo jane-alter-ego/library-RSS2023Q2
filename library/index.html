@@ -57,6 +57,18 @@
                         </div>
                     </div>
 
+                    <div id="dropmenu" class="dropmenu">
+                        <!--add class open-->
+                        <button id="button-user-active"></button>
+                        <div id="user-active">
+                            <p>Profile</p>
+                            <hr class="line-user">
+                            <button class="user-menu-link" id="user-menu-link-profile">My profile</button>
+                            <button class="user-menu-link" id="user-menu-link-logout">Log Out</button>
+                        </div>
+                    </div>
+
+
                     <button class="menu-burger-button" id="menu-burger-button">
                         <span class="burger-lines"></span>
                         <span class="burger-lines"></span>
@@ -425,7 +437,7 @@
                 </div>
             </section>
 
-            <section id="card" class="user-log-in">
+            <section id="card" class="user-log-in open">
                 <!--add class open-->
                 <h2>Digital Library Cards</h2>
                 <hr class="line">
@@ -551,7 +563,7 @@
                     <p>E-mail or readers card</p>
                     <input type="text" name="email" required>
                     <p>Password</p>
-                    <input type="text" name="password" required>
+                    <input type="password" name="password" required>
                 </form>
                 <button type="submit" form="form-modal-login" class="button-login">Log In</button>
                 <div id="no-account">
@@ -572,9 +584,9 @@
                     <p>Last name</p>
                     <input type="text" name="last" required>
                     <p>E-mail</p>
-                    <input type="text" name="email" required>
+                    <input type="email" name="email" required>
                     <p>Password</p>
-                    <input type="text" name="password" required>
+                    <input type="password" name="password" required>
                 </form>
                 <button type="submit" form="form-modal-register" class="button-signup">Sign Up</button>
                 <div id="has-account">
@@ -600,12 +612,12 @@
                             </div>
                             <p>CVC</p>
                             <div>
-                            <input id="cvc" type="text" name="CVC" required>
+                            <input id="cvc" type="number" name="CVC" required>
                             </div>
                             <p>Cardholder name</p>
                             <input type="text" name="name" required>
                             <p>Postal code</p>
-                            <input type="text" name="postal" required>
+                            <input type="number" name="postal" required>
                             <p>City / Town</p>
                             <input type="text" name="city" required>
                         </form>
@@ -617,6 +629,48 @@
                     
                         <p id="add-info-p">If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.</p>
                     
+                </div>
+            </div>
+
+            <div id="modal-profile" class="modal">
+                <div id="name-avatar">
+                    <div id="avatar"></div>
+                    <span id="name"></span>
+                </div>
+                <div>
+                    <div class="modal-header">
+                        <h2>MY PROFILE</h2>
+                        <button class="close-button modal-profile-close-button"><img src="assets/icons/close_btn.svg" alt="close button"></button> 
+                    </div>
+                    <div id="icons">
+                            <div id="visit">
+                                <h5>Visits</h5>
+                                <img src="assets/icons/visits.svg" alt="visits">
+                                <span class="visits"><p>23</p></span>
+                            </div>
+
+                            <div id="bonus">
+                                <h5>Bonuses</h5>
+                                <img src="assets/icons/star.svg" alt="bonuses">
+                                <span class="bonuses"><p>1240</p></span>
+                            </div>
+
+                            <div id="books-number">
+                                <h5>Books</h5>
+                                <img src="assets/icons/books.svg" alt="books">
+                                <span class="books-number"><p>2</p></span>
+                            </div>
+                    </div>
+                    <p>Rented books</p>
+                    <ul>
+                        <li>Book</li>
+                        <li>Book1</li>
+                    </ul>
+                    <div id="number-card">
+                        <p>Card number</p>
+                        <span id="card-number"></span>
+                        <img src="assets/icons/icon_copy.svg" alt="card number">
+                    </div>
                 </div>
             </div>
 

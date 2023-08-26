@@ -184,11 +184,23 @@ ul, ol {
     background-color: transparent;
 }
 
+#button-user-active {
+    width: 28px;
+    height: 28px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    text-align: center;
+    margin-top: 32px;
+    margin-right: 20px;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
 #user:hover, .carousel-indicators, .card, .close-button {
     cursor: pointer;
 }
 
-#user-inactive {
+#user-inactive, #user-active {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -207,7 +219,7 @@ ul, ol {
     background-color: #FFFFFF;
 }
 
-#user-inactive p {
+#user-inactive p, #user-active p {
     font-family: Inter;
     font-size: 15px;
     font-weight: 700;
@@ -227,7 +239,7 @@ ul, ol {
     margin-bottom: 13px;
 }
 
-#user-inactive button {
+#user-inactive button, #user-active button {
     background-color: transparent;
     color: #000000;
     font-family: Inter;
@@ -236,13 +248,13 @@ ul, ol {
     line-height: 20px;
     letter-spacing: 0em;
     text-align: center; 
-    width: 59px;
+    width: 71px;
     height: 20px;
     margin-bottom: 15px;
     cursor: pointer;
 }
 
-.user-menu.open #user-inactive {
+.user-menu.open #user-inactive, .dropmenu.open #user-active {
     display: flex;
     top: 90px;
     right: 0; 
@@ -251,6 +263,10 @@ ul, ol {
     -o-transition: 0.5s;
     transform: transition 0.5s, visibility 0.5s;
     visibility: visible;
+}
+
+#dropmenu {
+    display: none;
 }
 
 #bienvenido{
@@ -1441,7 +1457,121 @@ footer {
     margin: 10px 0 0 20px;  
 }
 
+/*modal-profile*/
+#modal-profile {
+    display: none;
+    flex-direction: row nowrap;
+    align-content: space-between;
+    width: 600px;
+    height: 400px;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: center;
+}
 
+.modal-profile-close-button {
+    margin-top: 15px;
+    margin-left: 125px;
+}
+
+#name-avatar {
+    background-color: #0C0C0E;
+    width: 170px;
+    height: 403px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#name {
+    width: 120px;
+    height: 30px;
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+    
+}
+
+#avatar {
+    width: 80px;
+    height: 80px;
+    background-color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+.modal-header h2 {
+    margin-left: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#number-card {
+    display: flex;
+    flex-direction: row nowrap;
+    justify-content: space-between;
+    width: 300px;
+    height: 20px;
+    margin-left: 20px;
+}
+
+#number-card p {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#modal-profile ul {
+    margin: 0 0 0 20px;
+}
+
+#modal-profile h5 {
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    margin: 0 0 10px 0;
+    padding: 0 0 0 0;
+}
+
+#modal-profile #icons {
+    display: flex;
+    flex-direction: row nowrap;
+    justify-content: space-between;
+    width: 270px;
+    height: 81px;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+#modal-profile #visit, #modal-profile #bonus, #modal-profile #books-number {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    width: 84px;
+    height: 81px;
+}
+
+#modal-profile img {
+    margin-left: 30px;
+}
+
+#icons p {
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    margin: 10px 0 0 0;
+    padding: 0 0 0 0;
+}
 
 /*@media*/
 
