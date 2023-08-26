@@ -66,11 +66,20 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("has-account-button").addEventListener("click", function() {
-        let div = document.getElementById("modal-register");
+    document.getElementById("log-in").addEventListener("click", function() {
+        document.querySelector(".overlay").classList.toggle("overlay-open");
+        let div = document.getElementById("modal-login");
+        div.style.display = 'flex';
+    })
+});
+
+/* переход из модального окна Login в Register*/
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("no-account-button").addEventListener("click", function() {
+        let div = document.getElementById("modal-login");
         div.style.display = 'none';
         document.querySelector(".overlay").classList.toggle("overlay-open");
-        let div2 = document.getElementById("modal-login");
+        let div2 = document.getElementById("modal-register");
         div2.style.display = 'flex';
     })
 });
@@ -86,14 +95,26 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("no-account-button").addEventListener("click", function() {
-        let div = document.getElementById("modal-login");
+    document.getElementById("sign-up").addEventListener("click", function() {
+        document.querySelector(".overlay").classList.toggle("overlay-open");
+        let div = document.getElementById("modal-register");
+        div.style.display = 'flex';
+    })
+});
+
+
+/*переход из модального окна Register в Login*/
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("has-account-button").addEventListener("click", function() {
+        let div = document.getElementById("modal-register");
         div.style.display = 'none';
         document.querySelector(".overlay").classList.toggle("overlay-open");
-        let div2 = document.getElementById("modal-register");
+        let div2 = document.getElementById("modal-login");
         div2.style.display = 'flex';
     })
 });
+
+
 
 /*Открытие модального окна с покупкой карты и оверлея по кнопке Buy*/
 document.addEventListener("DOMContentLoaded", function() {
