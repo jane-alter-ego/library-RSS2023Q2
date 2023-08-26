@@ -1049,13 +1049,25 @@ footer {
 }
 
 .overlay-open {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /*.noscroll {
     overflow: hidden;
 }*/
 
+.modal-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.close-button {
+    background-color: transparent;
+    width: 15px;
+    height: 15px;
+}
 
 /*modal-login*/
 #modal-login {
@@ -1066,8 +1078,7 @@ footer {
     height: 262px;
     background-color: #FFFFFF;
     position: fixed;
-    top: 90px;
-    right: 50px;
+    top: center;
 }
  
 #modal-login h6 {
@@ -1083,13 +1094,9 @@ footer {
     margin-bottom: 20px;
 }
 
-.close-button {
-    background-color: transparent;
-    width: 15px;
-    height: 15px;
-    position: fixed;
+.modal-login-close-button {
     margin-top: 15px;
-    right: 65px;
+    margin-left: 65px;
 }
 
 .button-login {
@@ -1186,8 +1193,7 @@ footer {
     height: 382px;
     background-color: #FFFFFF;
     position: fixed;
-    top: 90px;
-    right: 50px;
+    top: center;
 }
 
 #modal-register h6 {
@@ -1201,6 +1207,11 @@ footer {
     margin-top: 20px;
     margin-left: 85px;
     margin-bottom: 20px;
+}
+
+.modal-register-close-button {
+    margin-top: 15px;
+    margin-left: 50px;
 }
 
 .button-signup {
@@ -1290,20 +1301,33 @@ footer {
 
 /*modal-buy-card*/
 
-#buy-card {
-    display: flex;
-    flex-direction: column nowrap;
-    align-content: space-between;
+.modal-buy-card-close-button {
+    margin-top: 20px;
+    margin-right: 25px;
+    background-color: #000000;
 }
+
+.modal-header-buy-card {
+    background-color: #000000;
+    width: 650px;
+    height: 60px;
+    margin-bottom: 35px;
+}
+
 #modal-buy-card {
     width: 650px;
     height: 540px;
     background-color: #FFFFFF;
-    position: fixed;
-    top: 90px;
-    right: 50px;
     z-index: 11;
     display: none;
+    position: fixed;
+    top: center;
+}
+
+#buy-card {
+    display: flex;
+    flex-direction: column nowrap;
+    align-content: space-between;   
 }
 
 #modal-buy-card h2 {

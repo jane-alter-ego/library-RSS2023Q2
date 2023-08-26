@@ -56,65 +56,61 @@ document.body.addEventListener('click', event => {
     document.querySelector(".user-menu").classList.remove("open") 
 });
 
-/*Открытие модального окна Login*/
+/*Открытие модального окна Login в меню юзера*/
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("user-menu-link-login").addEventListener("click", function() {
         document.querySelector(".overlay").classList.toggle("overlay-open");
-        let div = document.getElementById("modal-login");
-        div.style.display = 'flex';
+        let login = document.getElementById("modal-login");
+        login.style.display = 'flex';
     })
 });
-
+/*Открытие модального окна Login в секции Get a Library Card*/
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("log-in").addEventListener("click", function() {
         document.querySelector(".overlay").classList.toggle("overlay-open");
-        let div = document.getElementById("modal-login");
-        div.style.display = 'flex';
+        let login = document.getElementById("modal-login");
+        login.style.display = 'flex';
     })
 });
 
 /* переход из модального окна Login в Register*/
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("no-account-button").addEventListener("click", function() {
-        let div = document.getElementById("modal-login");
-        div.style.display = 'none';
-        document.querySelector(".overlay").classList.toggle("overlay-open");
-        let div2 = document.getElementById("modal-register");
-        div2.style.display = 'flex';
+        let login = document.getElementById("modal-login");
+        login.style.display = 'none';
+        let register = document.getElementById("modal-register");
+        register.style.display = 'flex';
     })
 });
 
 
-/*Открытие модального окна Register*/
+/*Открытие модального окна Register в меню юзера*/
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("user-menu-link-register").addEventListener("click", function() {
         document.querySelector(".overlay").classList.toggle("overlay-open");
-        let div = document.getElementById("modal-register");
-        div.style.display = 'flex';
+        let register = document.getElementById("modal-register");
+        register.style.display = 'flex';
     })
 });
 
+/*Открытие модального окна Register в секции Get a Library Card*/
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("sign-up").addEventListener("click", function() {
         document.querySelector(".overlay").classList.toggle("overlay-open");
-        let div = document.getElementById("modal-register");
-        div.style.display = 'flex';
+        let register = document.getElementById("modal-register");
+        register.style.display = 'flex';
     })
 });
-
 
 /*переход из модального окна Register в Login*/
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("has-account-button").addEventListener("click", function() {
-        let div = document.getElementById("modal-register");
-        div.style.display = 'none';
-        document.querySelector(".overlay").classList.toggle("overlay-open");
-        let div2 = document.getElementById("modal-login");
-        div2.style.display = 'flex';
+        let register = document.getElementById("modal-register");
+        register.style.display = 'none';
+        let login = document.getElementById("modal-login");
+        login.style.display = 'flex';
     })
 });
-
-
 
 /*Открытие модального окна с покупкой карты и оверлея по кнопке Buy*/
 document.addEventListener("DOMContentLoaded", function() {
@@ -125,11 +121,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }))
 });
 
-/*Закрытие модального окна с покупкой карты и оверлея по крестику */
+/*Закрытие модалок и оверлея по крестику */
 document.querySelectorAll(".close-button").forEach(el => el.addEventListener('click', event => {
     document.querySelector(".overlay").classList.remove("overlay-open");
-    let div = document.getElementById("modal-buy-card");
-    div.style.display = 'none';
+    let div = document.querySelectorAll(".modal");
+    div.forEach(el => el.style.display = 'none');
 }));
 
 

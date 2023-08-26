@@ -183,7 +183,8 @@
                         <h4>THE LAST QUEEN<br>
                             By Clive Irving</h4>
                         <p class="book-description">A timely and revelatory new biography of Queen Elizabeth (and her family) exploring how the Windsors have evolved and thrived as the modern world has changed around them.</p>
-                        <button type="button" class="own" disabled>Own</button>
+                        <!--<button type="button" class="own" disabled>Own</button>-->
+                        <button type="button" class="buy buy-before-login">Buy</button>
                         <img id="book4" src="assets/images/book4.png" alt="The last queen" class="img-books">       
                     </div>
 
@@ -224,7 +225,8 @@
                         <h4>DOMINICANA<br>
                             By Angie Cruz</h4>
                         <p class="book-description">A fascinating story of a teenage girl who marries a man twice her age with the promise to bring her to America. Her marriage is an opportunity for her family to eventually immigrate. For fans of Isabel Allende and Julia Alvarez.</p>
-                        <button type="button" class="own" disabled>Own</button>
+                        <!--<button type="button" class="own" disabled>Own</button>-->
+                        <button type="button" class="buy buy-before-login">Buy</button>
                         <img id="book8" src="assets/images/book8.png" alt="Dominicana" class="img-books">       
                     </div>
 
@@ -264,7 +266,8 @@
                         <h4>SHARK DIALOGUES: A NOVEL<br>
                             By Kiana Davenport</h4>
                         <p class="book-description">An epic saga of seven generations of one family encompasses the tumultuous history of Hawaii as a Hawaiian woman gathers her four granddaughters together in an erotic tale of villains and dreamers, queens and revolutionaries, lepers and healers.</p>
-                        <button type="button" class="own" disabled>Own</button>
+                        <!--<button type="button" class="own" disabled>Own</button>-->
+                        <button type="button" class="buy buy-before-login">Buy</button>
                         <img id="book12" src="assets/images/book12.png" alt="Shark Dialogues: A Novel" class="img-books">       
                     </div>
 
@@ -304,7 +307,8 @@
                         <h4>SLUG: AND OTHER STORIES<br>
                             By Megan Milks</h4>
                         <p class="book-description">Exes Tegan and Sara find themselves chained together by hairballs of codependency. A father and child experience the shared trauma of giving birth to gods from their wounds.</p>
-                        <button type="button" class="own" disabled>Own</button>
+                        <!--<button type="button" class="own" disabled>Own</button>-->
+                        <button type="button" class="buy buy-before-login">Buy</button>
                         <img id="book16" src="assets/images/book16.png" alt="Slug: And Other Stories" class="img-books">       
                     </div>
             
@@ -538,9 +542,11 @@
         <div id="overlay" class="overlay">
             <!--add class overlay-open-->
             
-            <div id="modal-login">
-                <button class="close-button"><img src="assets/icons/close_btn.svg" alt="close button"></button>
-                <h6>LOGIN</h6>
+            <div id="modal-login" class="modal">
+                <div class="modal-header">
+                    <h6>LOGIN</h6>
+                    <button class="close-button modal-login-close-button"><img src="assets/icons/close_btn.svg" alt="close button"></button> 
+                </div>
                 <form id="form-modal-login">
                     <p>E-mail or readers card</p>
                     <input type="text" name="email" required>
@@ -555,9 +561,11 @@
             </div>
         
 
-            <div id="modal-register">
-                <button class="close-button"><img src="assets/icons/close_btn.svg" alt="close button"></button>
-                <h6>REGISTER</h6>
+            <div id="modal-register" class="modal">
+                <div class="modal-header">
+                    <h6>REGISTER</h6>
+                    <button class="close-button modal-register-close-button"><img src="assets/icons/close_btn.svg" alt="close button"></button> 
+                </div>
                 <form id="form-modal-register">
                     <p>First name</p>
                     <input type="text" name="first" required>
@@ -575,9 +583,11 @@
                 </div>
             </div>
 
-            <div id="modal-buy-card">
-                <button class="close-button"><img src="assets/icons/close_btn_white.svg" alt="close button"></button>
-                <h2>Buy a library card</h2>
+            <div id="modal-buy-card" class="modal">
+                <div class="modal-header modal-header-buy-card">
+                    <h2>Buy a library card</h2>
+                    <button class="close-button modal-buy-card-close-button"><img src="assets/icons/close_btn_white.svg" alt="close button"></button>
+                </div>
                 <div id="buy-card">
                     <div>
                         <form id="form-modal-buy-card">
