@@ -56,6 +56,22 @@ document.body.addEventListener('click', event => {
     document.querySelector(".user-menu").classList.remove("open") 
 });
 
+/*Открытие модального окна с покупкой карты и оверлея по кнопке Buy*/
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".buy-before-login").forEach(el => el.addEventListener("click", function() {
+        document.querySelector(".overlay").classList.toggle("overlay-open");
+        let div = document.getElementById("modal-buy-card");
+        div.style.display = 'block';
+    }))
+});
+
+/*Закрытие модального окна с покупкой карты и оверлея по крестику */
+document.querySelector(".close-button").addEventListener('click', event => {
+    document.querySelector(".overlay").classList.remove("overlay-open");
+    let div = document.getElementById("modal-buy-card");
+    div.style.display = 'none';
+});
+
 
 // Slider About
 let slideIndex = 1;
