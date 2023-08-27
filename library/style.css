@@ -915,7 +915,7 @@ input[type="text"]:focus {
     margin-left: 10px;
 }
 
-#icons p {
+#icons p, #icons span {
     font-family: Inter;
     font-size: 10px;
     font-weight: 400;
@@ -1518,15 +1518,31 @@ footer {
     width: 300px;
     height: 20px;
     margin-left: 20px;
+    margin-bottom: 40px;
+    margin-top: 20px;
 }
 
 #number-card p {
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
 
-#modal-profile ul {
-    margin: 0 0 0 20px;
+#number-card span {
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    color: #BB945F;
 }
 
 #modal-profile h5 {
@@ -1562,15 +1578,35 @@ footer {
     margin-left: 30px;
 }
 
-#icons p {
+#rented-books-list p {
     font-family: Inter;
-    font-size: 10px;
+    font-size: 25px;
     font-weight: 400;
     line-height: 20px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0px;
     text-align: center;
-    margin: 10px 0 0 0;
-    padding: 0 0 0 0;
+    margin: 10px 0 30px 20px;
+    width: 164px;
+    height: 20px;
+}
+
+#rented-books-list ul {
+    overflow: scroll;
+    height: 70px;
+    width: 350px;
+    list-style-type: disc;
+    list-style-position: inside;
+    margin: 0 0 0 30px;
+}
+
+#rented-books-list li {
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-align: left;
+    margin-bottom: 10px;
 }
 
 /*@media*/
