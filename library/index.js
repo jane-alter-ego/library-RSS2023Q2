@@ -26,6 +26,24 @@ document.body.addEventListener('click', event => {
     document.querySelector(".header-links").classList.remove("open") 
 });
 
+//fieldset sticky
+
+document.addEventListener('DOMContentLoaded', function() {
+    let fieldset = document.getElementById("fieldset");
+    let sticky = fieldset.offsetTop;
+    const favoritesItems = document.getElementById('favorites-items');
+    const endSticky = fieldset.offsetTop + favoritesItems.offsetHeight - fieldset.offsetHeight;
+    window.onscroll = function() {myFunction()};
+    function myFunction() {
+        if (window.scrollY >= sticky && window.scrollY <= endSticky) {
+          fieldset.classList.add("sticky")
+        } else {
+          fieldset.classList.remove("sticky");
+        }
+      }
+})
+
+
 //Open user-menu
 document.addEventListener("DOMContentLoaded", function() {
      document.getElementById("button-user").addEventListener("click", function() {

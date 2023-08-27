@@ -14,11 +14,11 @@ html {
 .container {
     width: 1440px;
     margin: 0 auto;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 #body-wraper {
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 main {
@@ -355,6 +355,14 @@ ul, ol {
 
 /*section favorites*/
 
+.sticky {
+    position: fixed;
+    top: 0;
+    background-color: #FFFFFF;
+    z-index: 1;
+    width: 100%;
+}
+
 fieldset {
     display: flex;
     flex-flow: row wrap;
@@ -504,7 +512,6 @@ input[type="radio"]:checked + label {
 .hidden {
     display: none;
 }
-
 
 .buy, .button-login, .button-signup, .buy-card {
     font-family: Inter;
