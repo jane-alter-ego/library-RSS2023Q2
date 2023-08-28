@@ -1658,7 +1658,7 @@ footer {
         padding-top: 0;
     }
 
-    .user-menu.open #user-inactive {
+    .user-menu.open #user-inactive, .dropmenu.open #user-active {
         display: flex;
         top: 90px;
         right: 80px; 

@@ -52,11 +52,11 @@ document.addEventListener("DOMContentLoaded", function() {
  });
 
 //Открытие меню юзера после регистрации
-//document.addEventListener("DOMContentLoaded", function() {
-//    document.getElementById("button-user-active").addEventListener("click", function() {
-//        document.getElementById("dropmenu").classList.toggle("open")
-//    })
-//});
+document.addEventListener("DOMContentLoaded", function() {
+   document.getElementById("button-user-active").addEventListener("click", function() {
+       document.getElementById("dropmenu").classList.toggle("open")
+   })
+});
 
 //Close user-menu by Esc
 window.addEventListener('keydown', (e) => {
@@ -81,19 +81,19 @@ document.body.addEventListener('click', event => {
 });
 
 // Close dropmenu by outer click
-//document.getElementById("button-user-active").addEventListener('click', event => {
-//    event._isClickWithInUserMenu = true;
-//});
-//document.getElementById("user-active").addEventListener('click', event => {
+document.getElementById("button-user-active").addEventListener('click', event => {
+   event._isClickWithInUserMenu = true;
+});
+document.getElementById("user-active").addEventListener('click', event => {
     /*event._isClickWithInMenu = true; menu is still open*/
-//    if (event._isClickWithInUserMenu) return;
-//    document.querySelector(".dropmenu").classList.remove("open")
-//});
+   if (event._isClickWithInUserMenu) return;
+   document.querySelector(".dropmenu").classList.remove("open")
+});
 
-//document.body.addEventListener('click', event => {
-//    if (event._isClickWithInUserMenu) return;
-//    document.querySelector(".dropmenu").classList.remove("open") 
-//});
+document.body.addEventListener('click', event => {
+   if (event._isClickWithInUserMenu) return;
+   document.querySelector(".dropmenu").classList.remove("open") 
+});
 
 
 /*Открытие модального окна Login в меню юзера*/
@@ -220,6 +220,78 @@ document.addEventListener("DOMContentLoaded", function() {
         seasonBooks.forEach(book => ((book.classList.remove("hidden"))));
     })));
 });
+
+
+//Register
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".button-signup").addEventListener("click", function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        let firstName = document.querySelector('[name="first"]').value;
+        let lastName = document.querySelector('[name="last"]').value;
+        let email = document.querySelector('[name="email-register"]').value;
+        let password = document.querySelector('[name="password-register"]').value;
+        
+        const profile = {
+            firstName,
+            lastName,
+            email,
+            password
+        }
+        const localUsers = window.localStorage.getItem('users');
+        const users = localUsers ? JSON.parse(localUsers) : [];
+        const foundUser = users.filter(user => user.email === email);
+        if (foundUser.length > 0) {
+            alert('User with such email already exists');
+            return;
+        }
+        users.push(profile);
+        window.localStorage.setItem('users', JSON.stringify(users));
+        window.localStorage.setItem('loggedUser', JSON.stringify(profile));
+
+        let register = document.getElementById("modal-register");
+        register.style.display = 'none';
+        document.querySelector(".overlay").classList.remove("overlay-open");
+    })
+});
+
+//Login
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".button-login").addEventListener("click", function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        let mail = document.querySelector('[name="email-login"]').value;
+        let pass = document.querySelector('[name="password-login"]').value;
+        
+        const data = JSON.parse(localStorage.getItem('users'));
+        if (!data || data.length === 0) {
+            return alert("User doesn't exist");
+        }
+        const foundUser = data.filter(user => user.email === mail)[0];
+
+        if (!foundUser) {
+            return alert("User doesn't exist");
+        }
+        if (foundUser.password === pass) {
+            window.localStorage.setItem('loggedUser', JSON.stringify(foundUser));
+
+            let buttonUser = document.getElementById("button-user"); // изм кнопки юзера
+            buttonUser.style.display = 'none';
+            let buttonUserActive = document.getElementById("dropmenu");
+            buttonUserActive.style.display = 'flex';
+            document.getElementById("card").classList.toggle("open"); // изм вида секции с карточкой
+            
+            let register = document.getElementById("modal-login");
+            register.style.display = 'none';
+            document.querySelector(".overlay").classList.remove("overlay-open");
+            return;
+        }
+        return alert("Invalid credentials");
+        
+    })
+});
+
 
 
 /*console.log(`Library#2 Самооценка 50/50\n
