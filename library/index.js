@@ -163,11 +163,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /*Открытие модального окна с профилем*/
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("profile").addEventListener("click", function() {
+    document.querySelectorAll(".profile").forEach(el => el.addEventListener("click", function() {
         document.querySelector(".overlay").classList.toggle("overlay-open");
         let register = document.getElementById("modal-profile");
         register.style.display = 'flex';
-    })
+    }))
 });
 
 
@@ -282,6 +282,18 @@ document.addEventListener("DOMContentLoaded", function() {
             buttonUserActive.style.display = 'flex';
             document.getElementById("card").classList.toggle("open"); // изм вида секции с карточкой
             
+            let username = document.getElementById("username"); // имя юзера в поле library card
+            username.value = foundUser.firstName + ' ' + foundUser.lastName;
+
+            let profileName = document.getElementById("username-profile"); // имя юзера в modal profile
+            profileName.innerText = foundUser.firstName + ' ' + foundUser.lastName;
+
+            let avatarName = document.getElementById("avatar"); // аватар юзера в modal profile
+            avatarName.innerText = foundUser.firstName[0] + foundUser.lastName[0];
+
+            let buttonStyle = document.getElementById("button-user-active"); // аватар юзера на иконке
+            buttonStyle.innerText = foundUser.firstName[0] + foundUser.lastName[0];  
+
             let register = document.getElementById("modal-login");
             register.style.display = 'none';
             document.querySelector(".overlay").classList.remove("overlay-open");
@@ -292,6 +304,12 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 });
 
+//Logout
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("user-menu-link-logout").addEventListener("click", function(event) {
+        document.location.reload();
+    })
+});
 
 
 /*console.log(`Library#2 Самооценка 50/50\n

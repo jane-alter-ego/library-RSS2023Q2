@@ -63,7 +63,7 @@
                         <div id="user-active">
                             <p>Profile</p>
                             <hr class="line-user">
-                            <button class="user-menu-link" id="user-menu-link-profile">My profile</button>
+                            <button class="user-menu-link profile" id="user-menu-link-profile">My profile</button>
                             <button class="user-menu-link" id="user-menu-link-logout">Log Out</button>
                         </div>
                     </div>
@@ -472,8 +472,8 @@
                         <div id="form-after-register">
                         <form id="f-after-register">
                             <p>Brooklyn Public Library</p>
-                            <input type="text" placeholder="John Doe" name="name" required>
-                            <input type="text" placeholder="F00234030" name="number" required>
+                            <input type="text" name="username" id="username" required>
+                            <input type="text" name="user-card-number" id="user-card-number" required>
                 
                         </form>
                         <div id="icons">
@@ -501,7 +501,7 @@
                         <h6>Visit your profile</h6>
                         <p>With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.</p>
                         
-                        <button type="button" class="buy" id="profile">Profile</button>
+                        <button type="button" class="buy profile" id="profile">Profile</button>
                     </div>
                 </div>
             </section>
@@ -638,7 +638,7 @@
             <div id="modal-profile" class="modal">
                 <div id="name-avatar">
                     <div id="avatar"></div>
-                    <span id="name"></span>
+                    <span id="username-profile"></span>
                 </div>
                 <div>
                     <div class="modal-header">

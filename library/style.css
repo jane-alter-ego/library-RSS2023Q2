@@ -189,10 +189,16 @@ ul, ol {
     height: 28px;
     background-color: #FFFFFF;
     border-radius: 50%;
-    text-align: center;
     margin-top: 32px;
     margin-right: 20px;
     margin-left: 30px;
+    color: #BB945F;
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
     cursor: pointer;
 }
 
@@ -1491,9 +1497,10 @@ footer {
     align-items: center;
 }
 
-#name {
+#username-profile {
     width: 120px;
-    height: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     background-color: #FFFFFF;
     color: #000000;
     font-family: Inter;
@@ -1501,15 +1508,22 @@ footer {
     font-weight: 400;
     line-height: 20px;
     letter-spacing: 0px;
-    text-align: center;
-    
+    text-align: center;   
 }
 
 #avatar {
     width: 80px;
-    height: 80px;
+    height: 50px;
     background-color: #FFFFFF;
     margin-bottom: 10px;
+    color: #BB945F;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+    padding-top: 30px;
 }
 
 .modal-header h2 {
