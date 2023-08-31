@@ -598,43 +598,6 @@
                 </div>
             </div>
 
-            <div id="modal-buy-card" class="modal">
-                <div class="modal-header modal-header-buy-card">
-                    <h2>Buy a library card</h2>
-                    <button class="close-button modal-buy-card-close-button"><img src="assets/icons/close_btn_white.svg" alt="close button"></button>
-                </div>
-                <div id="buy-card">
-                    <div>
-                        <form id="form-modal-buy-card">
-                            <p>Bank card number</p>
-                            <input type="text" name="bank" required>
-                            <p>Expiration code</p>
-                            <div style="display:inline-block">
-                            <input id="code-p1" type="text" name="code-part1" required>
-                            <input id="code-p2" type="text" name="code-part2" required>
-                            </div>
-                            <p>CVC</p>
-                            <div>
-                            <input id="cvc" type="number" name="CVC" required>
-                            </div>
-                            <p>Cardholder name</p>
-                            <input type="text" name="name" required>
-                            <p>Postal code</p>
-                            <input type="number" name="postal" required>
-                            <p>City / Town</p>
-                            <input type="text" name="city" required>
-                        </form>
-                        <div id="button-price">
-                            <button type="submit" form="form-modal-buy-card" class="buy-card">Buy</button>
-                            <p id="price">$ 25.00</p>
-                        </div>
-                    </div>
-                    
-                        <p id="add-info-p">If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.</p>
-                    
-                </div>
-            </div>
-
             <div id="modal-profile" class="modal">
                 <div id="name-avatar">
                     <div id="avatar"></div>
@@ -681,6 +644,45 @@
                 </div>
             </div>
 
+        </div>
+        <div id="overlay-buy" class="overlay">
+            <!--add class open-->
+            <div id="modal-buy-card">
+                <div class="modal-header modal-header-buy-card">
+                    <h2>Buy a library card</h2>
+                    <button id="modal-buy-card-close-button"><img src="assets/icons/close_btn_white.svg" alt="close button"></button>
+                </div>
+                <div id="buy-card">
+                    <div>
+                        <form id="form-modal-buy-card">
+                            <p>Bank card number</p>
+                            <input type="text" name="bank" required>
+                            <p>Expiration code</p>
+                            <div style="display:inline-block">
+                            <input id="code-p1" type="text" name="code-part1" required>
+                            <input id="code-p2" type="text" name="code-part2" required>
+                            </div>
+                            <p>CVC</p>
+                            <div>
+                            <input id="cvc" type="number" name="CVC" required>
+                            </div>
+                            <p>Cardholder name</p>
+                            <input type="text" name="name" required>
+                            <p>Postal code</p>
+                            <input type="number" name="postal" required>
+                            <p>City / Town</p>
+                            <input type="text" name="city" required>
+                        </form>
+                        <div id="button-price">
+                            <button type="submit" form="form-modal-buy-card" class="buy-card">Buy</button>
+                            <p id="price">$ 25.00</p>
+                        </div>
+                    </div>
+                    
+                        <p id="add-info-p">If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.</p>
+                    
+                </div>
+            </div>
         </div>
     </div>
         <script src="index.js"></script>

@@ -99,7 +99,7 @@ document.body.addEventListener('click', event => {
 /*Открытие модального окна Login в меню юзера*/
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("user-menu-link-login").addEventListener("click", function() {
-        document.querySelector(".overlay").classList.toggle("overlay-open");
+        document.getElementById("overlay").classList.toggle("overlay-open");
         let login = document.getElementById("modal-login");
         login.style.display = 'flex';
     })
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
 /*Открытие модального окна Login в секции Get a Library Card*/
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("log-in").addEventListener("click", function() {
-        document.querySelector(".overlay").classList.toggle("overlay-open");
+        document.getElementById("overlay").classList.toggle("overlay-open");
         let login = document.getElementById("modal-login");
         login.style.display = 'flex';
     })
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function() {
 /*Открытие модального окна Register в меню юзера*/
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("user-menu-link-register").addEventListener("click", function() {
-        document.querySelector(".overlay").classList.toggle("overlay-open");
+        document.getElementById("overlay").classList.toggle("overlay-open");
         let register = document.getElementById("modal-register");
         register.style.display = 'flex';
     })
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function() {
 /*Открытие модального окна Register в секции Get a Library Card*/
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("sign-up").addEventListener("click", function() {
-        document.querySelector(".overlay").classList.toggle("overlay-open");
+        document.getElementById("overlay").classList.toggle("overlay-open");
         let register = document.getElementById("modal-register");
         register.style.display = 'flex';
     })
@@ -155,16 +155,23 @@ document.addEventListener("DOMContentLoaded", function() {
 /*Открытие модального окна с покупкой карты и оверлея по кнопке Buy*/
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".buy-before-login").forEach(el => el.addEventListener("click", function() {
-        document.querySelector(".overlay").classList.toggle("overlay-open");
+        document.getElementById("overlay-buy").classList.toggle("overlay-open");
         let div = document.getElementById("modal-buy-card");
         div.style.display = 'block';
     }))
 });
 
+//Закрытие модального окна с покупкой карты и оверлея крестику
+document.getElementById("modal-buy-card-close-button").addEventListener('click', event => {
+    document.getElementById("overlay-buy").classList.remove("overlay-open");
+    let modalBuyCard = document.getElementById("modal-buy-card");
+    modalBuyCard.style.display = 'none';
+});
+
 /*Открытие модального окна с профилем*/
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".profile").forEach(el => el.addEventListener("click", function() {
-        document.querySelector(".overlay").classList.toggle("overlay-open");
+        document.getElementById("overlay").classList.toggle("overlay-open");
         let register = document.getElementById("modal-profile");
         register.style.display = 'flex';
     }))
@@ -173,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /*Закрытие модалок и оверлея по крестику */
 document.querySelectorAll(".close-button").forEach(el => el.addEventListener('click', event => {
-    document.querySelector(".overlay").classList.remove("overlay-open");
+    document.getElementById("overlay").classList.remove("overlay-open");
     let div = document.querySelectorAll(".modal");
     div.forEach(el => el.style.display = 'none');
 }));
@@ -248,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function() {
         users.push(profile);
         window.localStorage.setItem('users', JSON.stringify(users));
         window.localStorage.setItem('loggedUser', JSON.stringify(profile));
-
+        handleLogin(profile);
         let register = document.getElementById("modal-register");
         register.style.display = 'none';
         document.querySelector(".overlay").classList.remove("overlay-open");
@@ -275,27 +282,10 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         if (foundUser.password === pass) {
             window.localStorage.setItem('loggedUser', JSON.stringify(foundUser));
-
-            let buttonUser = document.getElementById("button-user"); // изм кнопки юзера
-            buttonUser.style.display = 'none';
-            let buttonUserActive = document.getElementById("dropmenu");
-            buttonUserActive.style.display = 'flex';
-            document.getElementById("card").classList.toggle("open"); // изм вида секции с карточкой
+            handleLogin(foundUser);
             
-            let username = document.getElementById("username"); // имя юзера в поле library card
-            username.value = foundUser.firstName + ' ' + foundUser.lastName;
-
-            let profileName = document.getElementById("username-profile"); // имя юзера в modal profile
-            profileName.innerText = foundUser.firstName + ' ' + foundUser.lastName;
-
-            let avatarName = document.getElementById("avatar"); // аватар юзера в modal profile
-            avatarName.innerText = foundUser.firstName[0] + foundUser.lastName[0];
-
-            let buttonStyle = document.getElementById("button-user-active"); // аватар юзера на иконке
-            buttonStyle.innerText = foundUser.firstName[0] + foundUser.lastName[0];  
-
-            let register = document.getElementById("modal-login");
-            register.style.display = 'none';
+            let login = document.getElementById("modal-login");
+            login.style.display = 'none';
             document.querySelector(".overlay").classList.remove("overlay-open");
             return;
         }
@@ -304,9 +294,53 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 });
 
+handleLogin = (user) => {
+            let buttonUser = document.getElementById("button-user"); // изм кнопки юзера
+            buttonUser.style.display = 'none';
+            let buttonUserActive = document.getElementById("dropmenu");
+            buttonUserActive.style.display = 'flex';
+            document.getElementById("card").classList.toggle("open"); // изм вида секции с карточкой
+            
+            let username = document.getElementById("username"); // имя юзера в поле library card
+            username.value = user.firstName + ' ' + user.lastName;
+
+            let profileName = document.getElementById("username-profile"); // имя юзера в modal profile
+            profileName.innerText = user.firstName + ' ' + user.lastName;
+
+            let avatarName = document.getElementById("avatar"); // аватар юзера в modal profile
+            avatarName.innerText = user.firstName[0] + user.lastName[0];
+
+            let buttonStyle = document.getElementById("button-user-active"); // аватар юзера на иконке
+            buttonStyle.innerText = user.firstName[0] + user.lastName[0];  
+};
+
+//Buy card - first login
+
+//Get a card number
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".buy-card").addEventListener("click", function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        const userString = window.localStorage.getItem('loggedUser');
+        const user = userString ? JSON.parse(userString) : undefined;
+
+        if (!user) {
+            let login = document.getElementById("modal-login");
+            login.style.display = 'flex';
+            document.getElementById("overlay").classList.toggle("overlay-open");
+        } else {
+            alert('Card buy!')
+        }
+
+
+        
+    })
+});
+
 //Logout
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("user-menu-link-logout").addEventListener("click", function(event) {
+        window.localStorage.removeItem('loggedUser');
         document.location.reload();
     })
 });

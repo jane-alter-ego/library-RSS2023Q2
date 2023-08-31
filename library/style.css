@@ -1083,6 +1083,10 @@ footer {
     justify-content: center;
 }
 
+#overlay-buy {
+    z-index: 100;
+}
+
 /*.noscroll {
     overflow: hidden;
 }*/
@@ -1330,10 +1334,12 @@ footer {
 
 /*modal-buy-card*/
 
-.modal-buy-card-close-button {
+#modal-buy-card-close-button {
     margin-top: 20px;
     margin-right: 25px;
     background-color: #000000;
+    width: 15px;
+    height: 15px;
 }
 
 .modal-header-buy-card {
