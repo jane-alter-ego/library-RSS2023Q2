@@ -152,12 +152,21 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 });
 
-/*Открытие модального окна с покупкой карты и оверлея по кнопке Buy*/
+/*по кнопке Buy*/
 document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll(".buy-before-login").forEach(el => el.addEventListener("click", function() {
-        document.getElementById("overlay-buy").classList.toggle("overlay-open");
-        let div = document.getElementById("modal-buy-card");
-        div.style.display = 'block';
+    document.querySelectorAll(".buy-before-login").forEach(el => el.addEventListener("click", function(event) {
+        const user = JSON.parse(window.localStorage.getItem('loggedUser'));
+        if (!user?.cardNumber) {
+            document.getElementById("overlay-buy").classList.toggle("overlay-open");
+            let div = document.getElementById("modal-buy-card");
+            div.style.display = 'block'; //Открытие модального окна с покупкой карты и оверлея
+        } else {
+            const favoritesItems = event.target.parentElement;
+            const heading = favoritesItems.querySelector('h4').innerText;
+            console.log(heading)
+            
+        }
+       
     }))
 });
 
@@ -254,8 +263,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         users.push(profile);
         window.localStorage.setItem('users', JSON.stringify(users));
-        window.localStorage.setItem('loggedUser', JSON.stringify(profile));
-        handleLogin(profile);
+        window.localStorage.setItem('loggedUser', JSON.stringify(profile)); // юзер сразу логинится
+        handleLogin(profile); // все изменения залогиненного интерфейса
         let register = document.getElementById("modal-register");
         register.style.display = 'none';
         document.querySelector(".overlay").classList.remove("overlay-open");
@@ -294,6 +303,14 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const user = JSON.parse(window.localStorage.getItem('loggedUser'));
+    if (user) {
+        handleLogin(user);
+    }
+})
+
+// все изменения залогиненного интерфейса
 handleLogin = (user) => {
             let buttonUser = document.getElementById("button-user"); // изм кнопки юзера
             buttonUser.style.display = 'none';
@@ -307,11 +324,23 @@ handleLogin = (user) => {
             let profileName = document.getElementById("username-profile"); // имя юзера в modal profile
             profileName.innerText = user.firstName + ' ' + user.lastName;
 
+            let cardNumber = document.getElementById("card-number"); // card number in modal profile
+            cardNumber.innerText = user.cardNumber;
+
+            let libraryCardNumber = document.getElementById("user-card-number"); // card number in library card
+            libraryCardNumber.value = user.cardNumber;
+            
             let avatarName = document.getElementById("avatar"); // аватар юзера в modal profile
             avatarName.innerText = user.firstName[0] + user.lastName[0];
 
             let buttonStyle = document.getElementById("button-user-active"); // аватар юзера на иконке
-            buttonStyle.innerText = user.firstName[0] + user.lastName[0];  
+            buttonStyle.innerText = user.firstName[0] + user.lastName[0]; 
+            
+            if (user.cardNumber) {
+                let modalBuyCard = document.getElementById("modal-buy-card");
+                modalBuyCard.style.display = 'none';
+                document.getElementById("overlay-buy").classList.remove("overlay-open");
+            };
 };
 
 //Buy card - first login
@@ -323,19 +352,60 @@ document.addEventListener("DOMContentLoaded", function() {
         event.stopPropagation();
         const userString = window.localStorage.getItem('loggedUser');
         const user = userString ? JSON.parse(userString) : undefined;
+        console.log(user);
 
         if (!user) {
             let login = document.getElementById("modal-login");
             login.style.display = 'flex';
             document.getElementById("overlay").classList.toggle("overlay-open");
-        } else {
-            alert('Card buy!')
-        }
-
-
-        
+        } else if (!user.cardNumber) {
+            console.log(user.cardNumber)
+            assignCardNumber();
+            let card = document.getElementById("modal-buy-card");
+            card.style.display = 'none';
+            document.getElementById("overlay-buy").classList.remove("overlay-open");
+        }; 
     })
 });
+
+//random card number
+function randomCardNumber() {
+    const randomNumber = String(Math.floor(Math.random() * 100000000));
+    if (randomNumber.length < 9) {
+        let number = 9 - randomNumber.length;
+        let addZeros = randomNumber.padStart(number, '0');
+        return addZeros;
+    }; 
+    console.log(addZeros); 
+};
+
+const findUserByCardNumber = (cardNumber) => {
+    const data = JSON.parse(window.localStorage.getItem('users'));
+
+    return data.filter(user => user.cardNumber === cardNumber)[0];
+}
+
+function assignCardNumber() {
+    let cardNumber;    
+    while (true) {
+        cardNumber = randomCardNumber();
+        if (!findUserByCardNumber(cardNumber)) {
+            break;
+        }
+    }
+    const user = JSON.parse(window.localStorage.getItem('loggedUser'));
+    user.cardNumber = cardNumber;
+    window.localStorage.setItem('loggedUser', JSON.stringify(user));
+    const users = JSON.parse(window.localStorage.getItem('users'));
+    users.forEach(item => {
+        if (item.mail === user.mail) {
+            item.cardNumber = cardNumber;
+        };
+    });
+    window.localStorage.setItem('users', JSON.stringify(users));
+    document.location.reload();
+};
+
 
 //Logout
 document.addEventListener("DOMContentLoaded", function() {
