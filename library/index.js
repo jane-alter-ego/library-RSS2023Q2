@@ -216,17 +216,39 @@ document.querySelectorAll(".close-button").forEach(el => el.addEventListener('cl
 
 // Slider About
 let slideIndex = 1;
+
+const handleArrowButtons = (slides) => {
+    const firstSlide = slides[0];
+    const lastSlide = slides[slides.length - 1];
+
+    const arrowLeft = document.getElementById("leftCarret");
+    const arrowRight = document.getElementById("rightCarret");
+
+
+    if (firstSlide.style.display === 'block') {
+        arrowLeft.setAttribute('disabled', true);
+    } else {
+        arrowLeft.removeAttribute('disabled');
+    }
+
+    if (lastSlide.style.display === 'block') {
+        arrowRight.setAttribute('disabled', true);
+    } else {
+        arrowRight.removeAttribute('disabled');
+    }
+}
+
 showSlides(slideIndex);
 
 // Next/previous controls
 function plusSlides(n) {
   showSlides(slideIndex += n);
-}
+};
 
 // Thumbnail image controls
 function currentSlide(n) {
   showSlides(slideIndex = n);
-}
+};
 
 function showSlides(n) {
     const showCount = window.innerWidth <= 1024 ? 1 : 3;
@@ -251,7 +273,8 @@ function showSlides(n) {
         })        
     }
     dots[slideIndex-1].className += " active";
-}
+    handleArrowButtons(slides);
+};
 
 window.onresize = () => {
     document.location.reload();
