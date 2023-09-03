@@ -1635,6 +1635,7 @@ footer {
     letter-spacing: 2px;
     text-align: left;
     margin-bottom: 10px;
+    text-transform: capitalize;
 }
 
 /*@media*/

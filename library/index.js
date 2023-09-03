@@ -167,7 +167,8 @@ document.addEventListener("DOMContentLoaded", function() {
             div.style.display = 'block'; //Открытие модального окна с покупкой карты и оверлея
         } else {
             const favoritesItems = event.target.parentElement;
-            const heading = favoritesItems.querySelector('h4').innerText; // передача данных о книге в профиль юзера
+            const heading = favoritesItems.querySelector('h4').innerText.replace("By", ",").toLowerCase(); // передача данных о книге в профиль юзера
+        
             // надо счетчик книг
             const booksInList = document.getElementById('rented-books').childNodes.length; // кол-во ли в списке
             const booksCountes = document.querySelectorAll(".books-number");
@@ -228,20 +229,33 @@ function currentSlide(n) {
 }
 
 function showSlides(n) {
+    const showCount = window.innerWidth <= 1024 ? 1 : 3;
+    const slides = document.getElementsByClassName("img");
+    const dots = document.getElementsByClassName("circle-button");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
 
-  const slides = document.getElementsByClassName("img");
-  const dots = document.getElementsByClassName("circle-button");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (let i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (let i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
+    if (showCount === 1) {
+        slides[slideIndex-1].style.display = "block";
+    } else {
+        Array.from(slides).forEach((slide, index) => {
+            if (index >= n - 1 && index < (n + showCount - 1)) {
+                slide.style.display = "block";
+            }
+        })        
+    }
+    dots[slideIndex-1].className += " active";
 }
+
+window.onresize = () => {
+    document.location.reload();
+};
 
 //Slider Favorites
 
