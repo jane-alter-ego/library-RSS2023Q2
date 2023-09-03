@@ -1,3 +1,8 @@
+const StorageItems = {
+    USERS: 'users',
+    LOGGED_USER: 'loggedUser',
+}
+
 //burger
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("menu-burger-button").addEventListener("click", function() {
@@ -152,25 +157,38 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 });
 
-/*по кнопке Buy*/
+//по кнопке Buy
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".buy-before-login").forEach(el => el.addEventListener("click", function(event) {
-        const user = JSON.parse(window.localStorage.getItem('loggedUser'));
+        const user = JSON.parse(window.localStorage.getItem(StorageItems.LOGGED_USER));
         if (!user?.cardNumber) {
             document.getElementById("overlay-buy").classList.toggle("overlay-open");
             let div = document.getElementById("modal-buy-card");
             div.style.display = 'block'; //Открытие модального окна с покупкой карты и оверлея
         } else {
             const favoritesItems = event.target.parentElement;
-            const heading = favoritesItems.querySelector('h4').innerText;
-            console.log(heading)
+            const heading = favoritesItems.querySelector('h4').innerText; // передача данных о книге в профиль юзера
+            // надо счетчик книг
+            const booksInList = document.getElementById('rented-books').childNodes.length; // кол-во ли в списке
+            const booksCountes = document.querySelectorAll(".books-number");
+            booksCountes.forEach(el => (el.innerHTML = booksInList));
+
+            //список книг в профиле
+            let liFirst = document.createElement('li');
+            liFirst.innerHTML = heading;
+            document.getElementById("rented-books").prepend(liFirst);
+            //изм вида кнопок
+            const buttonBuy = favoritesItems.querySelector('.buy');
+            buttonBuy.style.display = 'none';
+            const buttonOwn = favoritesItems.querySelector('.own');
+            buttonOwn.style.display = 'block';
             
         }
        
     }))
 });
 
-//Закрытие модального окна с покупкой карты и оверлея крестику
+//Закрытие модального окна с покупкinnerой карты и оверлея крестику
 document.getElementById("modal-buy-card-close-button").addEventListener('click', event => {
     document.getElementById("overlay-buy").classList.remove("overlay-open");
     let modalBuyCard = document.getElementById("modal-buy-card");
@@ -252,9 +270,10 @@ document.addEventListener("DOMContentLoaded", function() {
             firstName,
             lastName,
             email,
-            password
+            password,
+            loginCount: 1,
         }
-        const localUsers = window.localStorage.getItem('users');
+        const localUsers = window.localStorage.getItem(StorageItems.USERS);
         const users = localUsers ? JSON.parse(localUsers) : [];
         const foundUser = users.filter(user => user.email === email);
         if (foundUser.length > 0) {
@@ -262,9 +281,10 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
         users.push(profile);
-        window.localStorage.setItem('users', JSON.stringify(users));
-        window.localStorage.setItem('loggedUser', JSON.stringify(profile)); // юзер сразу логинится
+        window.localStorage.setItem(StorageItems.USERS, JSON.stringify(users));
+        window.localStorage.setItem(StorageItems.LOGGED_USER, JSON.stringify(profile)); // юзер сразу логинится
         handleLogin(profile); // все изменения залогиненного интерфейса
+
         let register = document.getElementById("modal-register");
         register.style.display = 'none';
         document.querySelector(".overlay").classList.remove("overlay-open");
@@ -280,7 +300,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let mail = document.querySelector('[name="email-login"]').value;
         let pass = document.querySelector('[name="password-login"]').value;
         
-        const data = JSON.parse(localStorage.getItem('users'));
+        const data = JSON.parse(localStorage.getItem(StorageItems.USERS));
         if (!data || data.length === 0) {
             return alert("User doesn't exist");
         }
@@ -290,8 +310,9 @@ document.addEventListener("DOMContentLoaded", function() {
             return alert("User doesn't exist");
         }
         if (foundUser.password === pass) {
-            window.localStorage.setItem('loggedUser', JSON.stringify(foundUser));
-            handleLogin(foundUser);
+            window.localStorage.setItem(StorageItems.LOGGED_USER, JSON.stringify(foundUser));
+            const updatedUser = updateUserInStorage({ loginCount: foundUser.loginCount ? (Number(foundUser.loginCount) + 1) : 1 });
+            handleLogin(updatedUser);
             
             let login = document.getElementById("modal-login");
             login.style.display = 'none';
@@ -303,8 +324,27 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 });
 
+//изм данных о юзере в локалсторедж
+const updateUserInStorage = (updateData) => {
+    const users = JSON.parse(window.localStorage.getItem(StorageItems.USERS));
+    const loggedUser = JSON.parse(window.localStorage.getItem(StorageItems.LOGGED_USER));
+
+    const newUser = Object.assign(loggedUser, updateData);
+
+    users.forEach((item, index, arr) => {
+        if (item.email === newUser.email) {
+            arr[index] = newUser;
+        }
+    });
+
+    window.localStorage.setItem(StorageItems.USERS, JSON.stringify(users));
+    window.localStorage.setItem(StorageItems.LOGGED_USER, JSON.stringify(newUser));
+
+    return newUser;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    const user = JSON.parse(window.localStorage.getItem('loggedUser'));
+    const user = JSON.parse(window.localStorage.getItem(StorageItems.LOGGED_USER));
     if (user) {
         handleLogin(user);
     }
@@ -335,12 +375,19 @@ handleLogin = (user) => {
 
             let buttonStyle = document.getElementById("button-user-active"); // аватар юзера на иконке
             buttonStyle.innerText = user.firstName[0] + user.lastName[0]; 
-            
+
+            const loginCounter = document.getElementById('visit-counter-profile');
+            loginCounter.innerText = user.loginCount;
+
+            const loginCounterCard = document.getElementById('visit-counter-card');
+            loginCounterCard.innerText = user.loginCount;
+
             if (user.cardNumber) {
                 let modalBuyCard = document.getElementById("modal-buy-card");
                 modalBuyCard.style.display = 'none';
                 document.getElementById("overlay-buy").classList.remove("overlay-open");
-            };
+            };       
+        
 };
 
 //Buy card - first login
@@ -350,7 +397,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".buy-card").addEventListener("click", function(event) {
         event.preventDefault();
         event.stopPropagation();
-        const userString = window.localStorage.getItem('loggedUser');
+        const userString = window.localStorage.getItem(StorageItems.LOGGED_USER);
         const user = userString ? JSON.parse(userString) : undefined;
         console.log(user);
 
@@ -380,7 +427,7 @@ function randomCardNumber() {
 };
 
 const findUserByCardNumber = (cardNumber) => {
-    const data = JSON.parse(window.localStorage.getItem('users'));
+    const data = JSON.parse(window.localStorage.getItem(StorageItems.USERS));
 
     return data.filter(user => user.cardNumber === cardNumber)[0];
 }
@@ -393,16 +440,16 @@ function assignCardNumber() {
             break;
         }
     }
-    const user = JSON.parse(window.localStorage.getItem('loggedUser'));
+    const user = JSON.parse(window.localStorage.getItem(StorageItems.LOGGED_USER));
     user.cardNumber = cardNumber;
-    window.localStorage.setItem('loggedUser', JSON.stringify(user));
-    const users = JSON.parse(window.localStorage.getItem('users'));
+    window.localStorage.setItem(StorageItems.LOGGED_USER, JSON.stringify(user));
+    const users = JSON.parse(window.localStorage.getItem(StorageItems.USERS));
     users.forEach(item => {
         if (item.mail === user.mail) {
             item.cardNumber = cardNumber;
         };
     });
-    window.localStorage.setItem('users', JSON.stringify(users));
+    window.localStorage.setItem(StorageItems.USERS, JSON.stringify(users));
     document.location.reload();
 };
 
@@ -410,7 +457,7 @@ function assignCardNumber() {
 //Logout
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("user-menu-link-logout").addEventListener("click", function(event) {
-        window.localStorage.removeItem('loggedUser');
+        window.localStorage.removeItem(StorageItems.LOGGED_USER);
         document.location.reload();
     })
 });
