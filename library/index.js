@@ -406,7 +406,11 @@ handleLogin = (user) => {
 
             let libraryCardNumber = document.getElementById("user-card-number"); // card number in library card
             libraryCardNumber.value = user.cardNumber;
-            
+
+            let cardNumberInDropmenu = document.getElementById("card-number-dropmenu"); // card number in dropmenu
+            cardNumberInDropmenu.textContent = user.cardNumber;
+            cardNumberInDropmenu.style.margin = "5px 0 3px -27px";
+            cardNumberInDropmenu.style.fontSize = "14px";
             let avatarName = document.getElementById("avatar"); // аватар юзера в modal profile
             avatarName.innerText = user.firstName[0] + user.lastName[0];
 
@@ -454,9 +458,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //random card number
 function randomCardNumber() {
-    const randomNumber = String(Math.floor(Math.random() * 100000000));
-    if (randomNumber.length < 9) {
-        let number = 9 - randomNumber.length;
+    const randomNumber = String(Math.floor(Math.random() * 1000000000));
+    if (randomNumber.length < 10) {
+        let number = 10 - randomNumber.length;
         let addZeros = randomNumber.padStart(number, '0');
         return addZeros;
     }; 
@@ -507,20 +511,27 @@ document.addEventListener("DOMContentLoaded", function() {
             username.value = foundUser.firstName + ' ' + foundUser.lastName;
             userCardNumber.value = foundUser.cardNumber;
             loginCounterCard.innerText = foundUser.loginCount;
-
+            const booksInList = document.getElementById('rented-books').childNodes.length; // кол-во ли в списке
+            const booksCountes = document.querySelectorAll(".books-number");
+            booksCountes.forEach(el => (el.innerHTML = booksInList));
             document.getElementById("card").classList.toggle("open");
             setTimeout(() =>{ 
                 document.getElementById("card").classList.toggle("open")
                 username.value = null;
                 userCardNumber.value = null;
-            }, 10000);
-            // clear 
-        //если нет, то ничего не происходит
-        // если да, то на 10 сек исчезает кнопка и появляется инфа об акке   
+            }, 10000); // если да, то на 10 сек исчезает кнопка и появляется инфа об акке
+            // clear       
     } else {
         alert('Not found user!');
     }  
 });
+})
+
+// Копирование номера карты в профиле
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("copy-button").addEventListener('click', () => {
+        window.navigator.clipboard.writeText(document.getElementById("card-number").innerText);
+    })
 })
 
 //Logout

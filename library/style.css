@@ -202,7 +202,7 @@ ul, ol {
     cursor: pointer;
 }
 
-#user:hover, .carousel-indicators, .card, .close-button {
+#user:hover, .carousel-indicators, .card, .close-button, #copy-button {
     cursor: pointer;
 }
 
@@ -1602,8 +1602,10 @@ footer {
     height: 81px;
 }
 
-#modal-profile img {
-    margin-left: 30px;
+#copy-button {
+    background-color: transparent;
+    width: 14px;
+    height: 12px;
 }
 
 #rented-books-list p {
