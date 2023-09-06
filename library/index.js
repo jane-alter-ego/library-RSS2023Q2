@@ -295,8 +295,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //Register
 document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector(".button-signup").addEventListener("click", function(event) {
-        event.preventDefault();
+    document.getElementById("form-modal-register").addEventListener("submit", function(event) {
+        // event.preventDefault();
         event.stopPropagation();
         let firstName = document.querySelector('[name="first"]').value;
         let lastName = document.querySelector('[name="last"]').value;
@@ -330,8 +330,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //Login
 document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector(".button-login").addEventListener("click", function(event) {
-        event.preventDefault();
+    document.getElementById("form-modal-login").addEventListener("submit", function(event) {
+        //event.preventDefault();
         event.stopPropagation();
 
         let mail = document.querySelector('[name="email-login"]').value;
@@ -402,22 +402,27 @@ handleLogin = (user) => {
             profileName.innerText = user.firstName + ' ' + user.lastName;
 
             let cardNumber = document.getElementById("card-number"); // card number in modal profile
-            cardNumber.innerText = user.cardNumber;
-
             let libraryCardNumber = document.getElementById("user-card-number"); // card number in library card
-            libraryCardNumber.value = user.cardNumber;
-
             let cardNumberInDropmenu = document.getElementById("card-number-dropmenu"); // card number in dropmenu
-            cardNumberInDropmenu.textContent = user.cardNumber;
-            cardNumberInDropmenu.style.margin = "5px 0 3px -27px";
-            cardNumberInDropmenu.style.fontSize = "14px";
+            
+            if (user.cardNumber != undefined) {
+                cardNumber.innerText = user.cardNumber;
+                libraryCardNumber.value = user.cardNumber;
+                cardNumberInDropmenu.textContent = user.cardNumber;
+                cardNumberInDropmenu.style.margin = "5px 0 3px -25px";
+                cardNumberInDropmenu.style.fontSize = "14px";
+            } else {
+                cardNumber.innerText = "000000000";
+                libraryCardNumber.value = "000000000";
+            } 
+
             let avatarName = document.getElementById("avatar"); // аватар юзера в modal profile
             avatarName.innerText = user.firstName[0] + user.lastName[0];
 
             let buttonStyle = document.getElementById("button-user-active"); // аватар юзера на иконке
             buttonStyle.innerText = user.firstName[0] + user.lastName[0]; 
 
-            const loginCounter = document.getElementById('visit-counter-profile');
+            const loginCounter = document.getElementById('visit-counter-profile'); // счетчик логинов (переписать по классу)
             loginCounter.innerText = user.loginCount;
 
             const loginCounterCard = document.getElementById('visit-counter-card');
@@ -435,8 +440,8 @@ handleLogin = (user) => {
 
 //Get a card number
 document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector(".buy-card").addEventListener("click", function(event) {
-        event.preventDefault();
+    document.getElementById("form-modal-buy-card").addEventListener("submit", function(event) {
+       //event.preventDefault();
         event.stopPropagation();
         const userString = window.localStorage.getItem(StorageItems.LOGGED_USER);
         const user = userString ? JSON.parse(userString) : undefined;
@@ -458,14 +463,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //random card number
 function randomCardNumber() {
-    const randomNumber = String(Math.floor(Math.random() * 1000000000));
-    if (randomNumber.length < 10) {
-        let number = 10 - randomNumber.length;
-        let addZeros = randomNumber.padStart(number, '0');
-        return addZeros;
-    }; 
-    console.log(addZeros); 
-};
+    const randomNumber = Math.floor(Math.random() * 1000000000).toString(16);
+    return randomNumber.padStart(9, '0');
+}
 
 const findUserByCardNumber = (cardNumber) => {
     const data = JSON.parse(window.localStorage.getItem(StorageItems.USERS));
@@ -520,7 +520,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 username.value = null;
                 userCardNumber.value = null;
             }, 10000); // если да, то на 10 сек исчезает кнопка и появляется инфа об акке
-            // clear       
+            document.getElementById("form-before").reset();// clear       
     } else {
         alert('Not found user!');
     }  

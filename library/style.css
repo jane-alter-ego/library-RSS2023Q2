@@ -1593,7 +1593,9 @@ footer {
     margin-left: 10px;
     margin-top: 20px;
 }
-
+#modal-profile #icons img {
+    margin-left: 30px;
+}
 #modal-profile #visit, #modal-profile #bonus, #modal-profile #books-number {
     display: flex;
     flex-direction: column;
