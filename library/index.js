@@ -417,7 +417,7 @@ handleLogin = (user) => {
             loginCounter.innerText = user.loginCount;
 
             const loginCounterCard = document.getElementById('visit-counter-card');
-            loginCounterCard.innerText = user.loginCount;
+            loginCounterCard.innerText = user.loginCount;  
 
             if (user.cardNumber) {
                 let modalBuyCard = document.getElementById("modal-buy-card");
@@ -482,7 +482,7 @@ function assignCardNumber() {
     window.localStorage.setItem(StorageItems.LOGGED_USER, JSON.stringify(user));
     const users = JSON.parse(window.localStorage.getItem(StorageItems.USERS));
     users.forEach(item => {
-        if (item.mail === user.mail) {
+        if (item.email === user.email) {
             item.cardNumber = cardNumber;
         };
     });
@@ -490,6 +490,38 @@ function assignCardNumber() {
     document.location.reload();
 };
 
+//Check the card
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("check-card").addEventListener("click", function() {
+        //взять имя и номер карты и проверить есть ли такой среди зареганных
+        //let name = document.querySelector('[name="name"]').value;
+        let cardNumber = document.querySelector('[name="number"]').value;
+        const data = JSON.parse(localStorage.getItem(StorageItems.USERS));
+        
+        const foundUser = data.filter(user => user.cardNumber === cardNumber)[0];
+
+        if (foundUser) {
+            const username = document.getElementById('username');
+            const userCardNumber = document.getElementById('user-card-number');
+            const loginCounterCard = document.getElementById('visit-counter-card');
+            username.value = foundUser.firstName + ' ' + foundUser.lastName;
+            userCardNumber.value = foundUser.cardNumber;
+            loginCounterCard.innerText = foundUser.loginCount;
+
+            document.getElementById("card").classList.toggle("open");
+            setTimeout(() =>{ 
+                document.getElementById("card").classList.toggle("open")
+                username.value = null;
+                userCardNumber.value = null;
+            }, 10000);
+            // clear 
+        //если нет, то ничего не происходит
+        // если да, то на 10 сек исчезает кнопка и появляется инфа об акке   
+    } else {
+        alert('Not found user!');
+    }  
+});
+})
 
 //Logout
 document.addEventListener("DOMContentLoaded", function() {
@@ -497,7 +529,7 @@ document.addEventListener("DOMContentLoaded", function() {
         window.localStorage.removeItem(StorageItems.LOGGED_USER);
         document.location.reload();
     })
-});
+})
 
 
 /*console.log(`Library#2 Самооценка 50/50\n
