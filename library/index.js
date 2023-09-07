@@ -185,6 +185,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // let liFirst = document.createElement('li');
             // liFirst.innerHTML = heading;
             // document.getElementById("rented-books").prepend(liFirst);
+
             // //изм вида кнопок
             const buttonBuy = favoritesItems.querySelector('.buy');
             buttonBuy.style.display = 'none';
@@ -445,7 +446,7 @@ handleLogin = (user) => {
         
 };
 
-function handleOwnedBooks (user) {
+function handleOwnedBooks (user, handleBuyButtons = true) {
     if (user.books?.length) {
         const booksCountes = document.querySelectorAll(".books-number");
         booksCountes.forEach(el => (el.innerHTML = user.books.length));
@@ -461,17 +462,18 @@ function handleOwnedBooks (user) {
         );
 
         // buy buttons
-        const favoritesItems = document.querySelectorAll('.favorites-items');
-        favoritesItems.forEach(item => {
-            const heading = item.querySelector('h4').innerText.replace("By", ",").toLowerCase();
-            if (user.books.includes(heading)) {
-                const buttonBuy = item.querySelector('.buy');
-                buttonBuy.style.display = 'none';
-                const buttonOwn = item.querySelector('.own');
-                buttonOwn.style.display = 'block';
-            }
-        })
-
+        if (handleBuyButtons) {
+            const favoritesItems = document.querySelectorAll('.favorites-items');
+            favoritesItems.forEach(item => {
+                const heading = item.querySelector('h4').innerText.replace("By", ",").toLowerCase();
+                if (user.books.includes(heading)) {
+                    const buttonBuy = item.querySelector('.buy');
+                    buttonBuy.style.display = 'none';
+                    const buttonOwn = item.querySelector('.own');
+                    buttonOwn.style.display = 'block';
+                }
+            })
+        }
     }
 }
 
@@ -550,9 +552,8 @@ document.addEventListener("DOMContentLoaded", function() {
             username.value = foundUser.firstName + ' ' + foundUser.lastName;
             userCardNumber.value = foundUser.cardNumber;
             loginCounterCard.innerText = foundUser.loginCount;
-            const booksInList = document.getElementById('rented-books').childNodes.length; // кол-во ли в списке
-            const booksCountes = document.querySelectorAll(".books-number");
-            booksCountes.forEach(el => (el.innerHTML = booksInList));
+            handleOwnedBooks(foundUser, false);
+
             document.getElementById("card").classList.toggle("open");
             setTimeout(() =>{ 
                 document.getElementById("card").classList.toggle("open")
