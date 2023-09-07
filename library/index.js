@@ -168,17 +168,24 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             const favoritesItems = event.target.parentElement;
             const heading = favoritesItems.querySelector('h4').innerText.replace("By", ",").toLowerCase(); // передача данных о книге в профиль юзера
-        
-            // надо счетчик книг
-            const booksInList = document.getElementById('rented-books').childNodes.length; // кол-во ли в списке
-            const booksCountes = document.querySelectorAll(".books-number");
-            booksCountes.forEach(el => (el.innerHTML = booksInList));
+            if (user.books) {
+                user.books.push(heading);
+            } else {
+                user.books = [heading];
+            }
+            updateUserInStorage({ books: user.books });
+            handleOwnedBooks(user);
 
-            //список книг в профиле
-            let liFirst = document.createElement('li');
-            liFirst.innerHTML = heading;
-            document.getElementById("rented-books").prepend(liFirst);
-            //изм вида кнопок
+            // // надо счетчик книг
+            // const booksInList = document.getElementById('rented-books').childNodes.length; // кол-во ли в списке
+            // const booksCountes = document.querySelectorAll(".books-number");
+            // booksCountes.forEach(el => (el.innerHTML = booksInList));
+
+            // //список книг в профиле
+            // let liFirst = document.createElement('li');
+            // liFirst.innerHTML = heading;
+            // document.getElementById("rented-books").prepend(liFirst);
+            // //изм вида кнопок
             const buttonBuy = favoritesItems.querySelector('.buy');
             buttonBuy.style.display = 'none';
             const buttonOwn = favoritesItems.querySelector('.own');
@@ -432,9 +439,41 @@ handleLogin = (user) => {
                 let modalBuyCard = document.getElementById("modal-buy-card");
                 modalBuyCard.style.display = 'none';
                 document.getElementById("overlay-buy").classList.remove("overlay-open");
-            };       
+            };
+            
+            handleOwnedBooks(user);
         
 };
+
+function handleOwnedBooks (user) {
+    if (user.books?.length) {
+        const booksCountes = document.querySelectorAll(".books-number");
+        booksCountes.forEach(el => (el.innerHTML = user.books.length));
+
+        //список книг в профиле
+        document.getElementById("rented-books").prepend(
+            ...user.books.map(book => {
+                const el = document.createElement('li');
+                el.innerText = book.replace('\n', '');
+
+                return el;
+            })
+        );
+
+        // buy buttons
+        const favoritesItems = document.querySelectorAll('.favorites-items');
+        favoritesItems.forEach(item => {
+            const heading = item.querySelector('h4').innerText.replace("By", ",").toLowerCase();
+            if (user.books.includes(heading)) {
+                const buttonBuy = item.querySelector('.buy');
+                buttonBuy.style.display = 'none';
+                const buttonOwn = item.querySelector('.own');
+                buttonOwn.style.display = 'block';
+            }
+        })
+
+    }
+}
 
 //Buy card - first login
 
